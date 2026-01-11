@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button"
 
 export default function HeroSection() {
   const handleCTA = () => {
-    const element = document.querySelector('[data-section="offer"]')
-    element?.scrollIntoView({ behavior: "smooth" })
+    window.location.href = "https://wwhustle.com/cart/51610450329883:1"
   }
 
   const handleSeeMore = () => {

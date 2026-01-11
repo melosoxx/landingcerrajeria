@@ -3,10 +3,7 @@
 import { Button } from "@/components/ui/button"
 
 export default function OfferStack() {
-  // CORRECCIÓN AQUÍ:
-  // Definimos explícitamente el tipo del array para que TypeScript sepa
-  // que 'originalPrice' es una propiedad válida (el '?' significa que es opcional).
-  const includes: { item: string; originalPrice?: string }[] = [
+  const includes = [
     { item: "Videos profesionales (4+ horas)" },
     { item: "Manuales PDF detallados" },
     { item: "Guía de herramientas (marcas y dónde comprar)" },
@@ -14,6 +11,10 @@ export default function OfferStack() {
     { item: "Cambio de combinaciones paso a paso" },
     { item: "Cálculo de precios y negociación" },
   ]
+
+  const handleCheckout = () => {
+    window.location.href = "https://wwhustle.com/cart/51610450329883:1"
+  }
 
   return (
     <section
@@ -37,11 +38,8 @@ export default function OfferStack() {
                 <div className="flex-1">
                   <p className="font-semibold mb-1 text-sm">{item.item}</p>
                 </div>
-                {/* Solo mostramos el precio si existe en el objeto */}
                 <div className="text-right">
-                  {item.originalPrice && (
-                    <p className="text-sm text-muted-foreground line-through">{item.originalPrice}</p>
-                  )}
+                  <p className="text-sm text-muted-foreground line-through">{item.originalPrice}</p>
                 </div>
               </div>
             ))}
@@ -56,7 +54,10 @@ export default function OfferStack() {
             <div className="font-bold text-primary mb-2 text-5xl">$14.999</div>
             <p className="text-sm text-muted-foreground mb-8">Pago único. Acceso de por vida.</p>
 
-            <Button className="py-8 font-bold bg-[oklch(0.55_0.2_142)] hover:bg-[oklch(0.50_0.2_142)] text-checkout-foreground shadow-lg shadow-[oklch(0.55_0.2_142)]/50 w-56 text-lg">
+            <Button
+              onClick={handleCheckout}
+              className="py-8 font-bold bg-[oklch(0.55_0.2_142)] hover:bg-[oklch(0.50_0.2_142)] text-checkout-foreground shadow-lg shadow-[oklch(0.55_0.2_142)]/50 w-56 text-lg"
+            >
               Comprar Acceso Ahora
             </Button>
 

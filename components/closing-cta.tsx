@@ -3,6 +3,10 @@
 import { Button } from "@/components/ui/button"
 
 export default function ClosingCta() {
+  const handleCheckout = () => {
+    window.location.href = "https://wwhustle.com/cart/51610450329883:1"
+  }
+
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background via-card to-background relative overflow-hidden">
       {/* Background effect */}
@@ -21,7 +25,10 @@ export default function ClosingCta() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Button className="px-12 py-8 font-bold bg-[oklch(0.55_0.2_142)] hover:bg-[oklch(0.50_0.2_142)] text-checkout-foreground shadow-lg shadow-[oklch(0.55_0.2_142)]/50 hover:shadow-[oklch(0.55_0.2_142)]/70 transition-all duration-300 rounded-lg text-base">
+          <Button
+            onClick={handleCheckout}
+            className="px-12 py-8 font-bold bg-[oklch(0.55_0.2_142)] hover:bg-[oklch(0.50_0.2_142)] text-checkout-foreground shadow-lg shadow-[oklch(0.55_0.2_142)]/50 hover:shadow-[oklch(0.55_0.2_142)]/70 transition-all duration-300 rounded-lg text-base"
+          >
             Acceder Ahora - $14.999 ARS
           </Button>
         </div>

@@ -3,13 +3,14 @@
 import { Button } from "@/components/ui/button"
 
 export default function OfferStack() {
+  // CORRECCIÓN: Se agregó 'originalPrice' a cada objeto para solucionar el error de TypeScript
   const includes = [
-    { item: "Videos profesionales (4+ horas)" },
-    { item: "Manuales PDF detallados" },
-    { item: "Guía de herramientas (marcas y dónde comprar)" },
-    { item: "Técnicas avanzadas de apertura" },
-    { item: "Cambio de combinaciones paso a paso" },
-    { item: "Cálculo de precios y negociación" },
+    { item: "Videos profesionales (4+ horas)", originalPrice: "$15.000" },
+    { item: "Manuales PDF detallados", originalPrice: "$10.000" },
+    { item: "Guía de herramientas (marcas y dónde comprar)", originalPrice: "$5.000" },
+    { item: "Técnicas avanzadas de apertura", originalPrice: "$8.000" },
+    { item: "Cambio de combinaciones paso a paso", originalPrice: "$8.000" },
+    { item: "Cálculo de precios y negociación", originalPrice: "$4.000" },
   ]
 
   const handleCheckout = () => {

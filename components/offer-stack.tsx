@@ -3,13 +3,16 @@
 import { Button } from "@/components/ui/button"
 
 export default function OfferStack() {
-  const includes = [
-    { item: "Videos profesionales (4+ horas)"},
-    { item: "Manuales PDF detallados"},
-    { item: "Guía de herramientas (marcas y dónde comprar)"},
-    { item: "Técnicas avanzadas de apertura"},
-    { item: "Cambio de combinaciones paso a paso"},
-    { item: "Cálculo de precios y negociación"},
+  // CORRECCIÓN AQUÍ:
+  // Definimos explícitamente el tipo del array para que TypeScript sepa
+  // que 'originalPrice' es una propiedad válida (el '?' significa que es opcional).
+  const includes: { item: string; originalPrice?: string }[] = [
+    { item: "Videos profesionales (4+ horas)" },
+    { item: "Manuales PDF detallados" },
+    { item: "Guía de herramientas (marcas y dónde comprar)" },
+    { item: "Técnicas avanzadas de apertura" },
+    { item: "Cambio de combinaciones paso a paso" },
+    { item: "Cálculo de precios y negociación" },
   ]
 
   return (
@@ -34,8 +37,11 @@ export default function OfferStack() {
                 <div className="flex-1">
                   <p className="font-semibold mb-1 text-sm">{item.item}</p>
                 </div>
+                {/* Solo mostramos el precio si existe en el objeto */}
                 <div className="text-right">
-                  <p className="text-sm text-muted-foreground line-through">{item.originalPrice}</p>
+                  {item.originalPrice && (
+                    <p className="text-sm text-muted-foreground line-through">{item.originalPrice}</p>
+                  )}
                 </div>
               </div>
             ))}

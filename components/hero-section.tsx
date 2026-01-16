@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 export default function HeroSection() {
   const handleCTA = () => {
-    window.location.href = "https://wwhustle.com/cart/51610450329883:1"
+    window.location.href = "https://robertopugliese.shop/cart/45612584861869:1"
   }
 
   const handleSeeMore = () => {

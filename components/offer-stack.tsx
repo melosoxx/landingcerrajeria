@@ -38,9 +38,6 @@ export default function OfferStack() {
                 <div className="flex-1">
                   <p className="font-semibold mb-1 text-sm">{item.item}</p>
                 </div>
-                <div className="text-right">
-                  <p className="text-sm text-muted-foreground line-through">{item.originalPrice}</p>
-                </div>
               </div>
             ))}
           </div>

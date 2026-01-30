@@ -23,8 +23,7 @@ export default function ProblemSection() {
     <section className="sm:py-24 px-4 sm:px-6 lg:px-8 bg-sidebar-border py-10 my-0.5 opacity-100">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          
-          
+          <h2 className="text-3xl sm:text-4xl font-bold">Este oficio es ideal para vos si experimentaste alguna de estas situaciones</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

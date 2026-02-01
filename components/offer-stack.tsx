@@ -13,7 +13,7 @@ export default function OfferStack() {
   ]
 
   const handleCheckout = () => {
-    window.location.href = "https://wwhustle.com/cart/51610450329883:1"
+    window.location.href = "https://robertopugliese.shop/cart/45612584861869:1"
   }
 
   return (

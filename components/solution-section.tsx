@@ -17,7 +17,7 @@ export default function SolutionSection() {
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tapa%20base.jpeg-2UDmiq1oDhZowi7Q1PDQEBjFErZRwX.png"
                 alt="Herramientas profesionales de cerrajería"
                 fill
-                className="object-cover opacity-90 border-background border-[0] rounded-2xl"
+                className="object-cover opacity-90 border-background border-0 rounded-2xl"
                 priority
               />
             </div>
@@ -36,21 +36,21 @@ export default function SolutionSection() {
 
             <div className="space-y-4 mb-8">
               <div className="flex gap-3">
-                <span className="text-primary text-xl font-bold flex-shrink-0">✓</span>
+                <span className="text-primary text-xl font-bold shrink-0">✓</span>
                 <div>
                   <h3 className="font-bold mb-1">Aprende a abrir puertas sin dañarlas</h3>
                   <p className="text-sm text-muted-foreground">Técnicas profesionales para todo tipo de cerraduras</p>
                 </div>
               </div>
               <div className="flex gap-3">
-                <span className="text-primary text-xl font-bold flex-shrink-0">✓</span>
+                <span className="text-primary text-xl font-bold shrink-0">✓</span>
                 <div>
                   <h3 className="font-bold mb-1">Domina cambios de combinación</h3>
                   <p className="text-sm text-muted-foreground">Métodos rápidos y seguros para todos los modelos</p>
                 </div>
               </div>
               <div className="flex gap-3">
-                <span className="text-primary text-xl font-bold flex-shrink-0">✓</span>
+                <span className="text-primary text-xl font-bold shrink-0">✓</span>
                 <div>
                   <h3 className="font-bold mb-1">Consigue tus herramientas</h3>
                   <p className="text-sm text-muted-foreground">

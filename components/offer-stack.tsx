@@ -34,7 +34,7 @@ export default function OfferStack() {
           <div className="space-y-4 mb-8">
             {includes.map((item, index) => (
               <div key={index} className="flex items-start gap-4 pb-4 border-b border-border/50 last:border-b-0">
-                <div className="text-primary text-2xl flex-shrink-0">✓</div>
+                <div className="text-primary text-2xl shrink-0">✓</div>
                 <div className="flex-1">
                   <p className="font-semibold mb-1 text-sm">{item.item}</p>
                 </div>

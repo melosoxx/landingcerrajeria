@@ -2,6 +2,32 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+
+const preciosServicios = [
+  { categoria: "Programado", servicio: "Apertura Simple (Turno previo)", franja: "Mañana (08:00 a 13:00)", precio: "$60.000", observaciones: "El servicio más económico." },
+  { categoria: "Programado", servicio: "Apertura Simple (Turno previo)", franja: "Tarde (13:00 a 19:00)", precio: "$75.000", observaciones: "Mantenimiento estándar." },
+  { categoria: "Programado", servicio: "Cambio de combinación / cilindro", franja: "Mañana / Tarde", precio: "$50.000", observaciones: "No incluye costo de materiales." },
+  { categoria: "Programado", servicio: "Apertura de vehículo", franja: "Mañana / Tarde", precio: "$85.000", observaciones: "Sin daños en la unidad." },
+  { categoria: "Emergencia", servicio: "Apertura de Urgencia \"After Hour\"", franja: "Tarde/Noche (19:00 a 23:00)", precio: "$130.000", observaciones: "Respuesta inmediata." },
+  { categoria: "Emergencia", servicio: "Apertura Nocturna Especial", franja: "Noche (23:00 a 06:00)", precio: "$180.000", observaciones: "Tarifa máxima por nocturnidad." },
+  { categoria: "Emergencia", servicio: "Apertura de Urgencia (Madrugada)", franja: "Pre-alba (06:00 a 08:00)", precio: "$150.000", observaciones: "Servicio antes de horario comercial." },
+  { categoria: "Emergencia", servicio: "Urgencias Domingos y Feriados", franja: "24 Horas", precio: "$160.000", observaciones: "Tarifa plana por día no laborable." },
+  { categoria: "Alta Seguridad", servicio: "Apertura Puerta Blindada / Judicial", franja: "Cualquier horario", precio: "$230.000", observaciones: "Requiere herramientas complejas." },
+]
+
+const getCategoriaStyle = (categoria: string) => {
+  switch (categoria) {
+    case "Programado":
+      return "bg-green-500/20 text-green-400 border-green-500/30"
+    case "Emergencia":
+      return "bg-red-500/20 text-red-400 border-red-500/30"
+    case "Alta Seguridad":
+      return "bg-blue-500/20 text-blue-400 border-blue-500/30"
+    default:
+      return "bg-muted text-muted-foreground"
+  }
+}
 
 export default function SolutionSection() {
   const [showVideo, setShowVideo] = useState(false)
@@ -97,7 +123,48 @@ export default function SolutionSection() {
               </div>
             </div>
 
-            <p className="text-primary font-bold text-3xl">↓ Resultado: Generá ingresos desde tu primer trabajo</p>
+            <p id="resultado-ingresos" className="text-primary font-bold text-3xl">↓ Resultado: Generá ingresos desde tu primer trabajo</p>
+
+            <Accordion type="single" collapsible className="mt-6">
+              <AccordionItem value="precios" className="border border-border/50 rounded-xl bg-card/50">
+                <AccordionTrigger data-accordion-trigger="precios" className="px-4 hover:no-underline">
+                  <span className="flex items-center gap-2 text-base font-semibold">
+                    📋 Ver tabla de precios de referencia
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="px-4">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-border/50">
+                          <th className="text-left py-3 px-2 text-primary font-semibold">Categoría</th>
+                          <th className="text-left py-3 px-2 text-primary font-semibold">Servicio</th>
+                          <th className="text-left py-3 px-2 text-primary font-semibold">Franja Horaria</th>
+                          <th className="text-left py-3 px-2 text-primary font-semibold">Precio</th>
+                          <th className="text-left py-3 px-2 text-primary font-semibold hidden sm:table-cell">Observaciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {preciosServicios.map((item, index) => (
+                          <tr key={index} className="border-b border-border/30 last:border-b-0">
+                            <td className="py-3 px-2">
+                              <span className={`text-xs px-2 py-1 rounded-full border ${getCategoriaStyle(item.categoria)}`}>
+                                {item.categoria}
+                              </span>
+                            </td>
+                            <td className="py-3 px-2 text-foreground">{item.servicio}</td>
+                            <td className="py-3 px-2 text-muted-foreground">{item.franja}</td>
+                            <td className="py-3 px-2 font-semibold text-primary">{item.precio}</td>
+                            <td className="py-3 px-2 text-muted-foreground text-xs hidden sm:table-cell">{item.observaciones}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-4 text-center">* Precios de referencia del mercado argentino</p>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </div>

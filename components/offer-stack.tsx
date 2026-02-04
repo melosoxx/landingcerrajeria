@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { trackEventWithServer } from "@/lib/meta-pixel"
+import { Check } from "lucide-react"
 
 export default function OfferStack() {
   // Estado para contador de personas viendo
@@ -89,10 +90,12 @@ export default function OfferStack() {
         <div className="rounded-2xl border-2 border-primary/30 p-8 sm:p-12 mb-8 px-0 bg-input">
           <div className="space-y-4 mb-8">
             {includes.map((item, index) => (
-              <div key={index} className="flex items-start gap-4 pb-4 border-b border-border/50 last:border-b-0">
-                <div className="text-primary text-2xl shrink-0">✓</div>
+              <div key={index} className="flex items-center gap-4 pb-4 border-b border-border/50 last:border-b-0 px-6">
+                <div className="shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
+                  <Check className="w-4 h-4 text-green-500" strokeWidth={3} />
+                </div>
                 <div className="flex-1">
-                  <p className="font-semibold mb-1 text-sm">{item.item}</p>
+                  <p className="font-medium text-base">{item.item}</p>
                 </div>
               </div>
             ))}
@@ -156,7 +159,7 @@ export default function OfferStack() {
             <div className="mb-4">
               <Button
                 onClick={handleCheckout}
-                className="relative overflow-hidden font-bold text-primary-foreground text-lg sm:text-xl py-8 w-full sm:w-auto sm:px-12 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-primary hover:bg-primary/90"
+                className="relative overflow-hidden font-bold text-white text-lg sm:text-xl py-8 w-full sm:w-auto sm:px-12 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-green-500 hover:bg-green-600"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   ACCEDER AL SISTEMA COMPLETO
@@ -171,8 +174,9 @@ export default function OfferStack() {
             </div>
 
             {/* Lista de beneficios */}
-            <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground">
-              <p>✓ Descarga segura</p>
+            <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+              <Check className="w-4 h-4 text-green-500" strokeWidth={3} />
+              <span>Descarga segura</span>
             </div>
           </div>
         </div>
@@ -180,17 +184,26 @@ export default function OfferStack() {
         {/* Trust badges */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center text-center text-sm">
           <div>
-            <p className="font-semibold text-primary mb-1">✓ Garantía 7 días</p>
+            <p className="font-semibold text-primary mb-1 flex items-center justify-center gap-2">
+              <Check className="w-4 h-4 text-green-500" strokeWidth={3} />
+              Garantía 7 días
+            </p>
             <p className="text-muted-foreground">Si no te gusta, devolución total</p>
           </div>
           <div className="hidden sm:block w-px bg-border/50"></div>
           <div>
-            <p className="font-semibold text-primary mb-1">✓ Soporte 24/7</p>
+            <p className="font-semibold text-primary mb-1 flex items-center justify-center gap-2">
+              <Check className="w-4 h-4 text-green-500" strokeWidth={3} />
+              Soporte 24/7
+            </p>
             <p className="text-muted-foreground">Dudas por WhatsApp</p>
           </div>
           <div className="hidden sm:block w-px bg-border/50"></div>
           <div>
-            <p className="font-semibold text-primary mb-1">✓ Envío inmediato</p>
+            <p className="font-semibold text-primary mb-1 flex items-center justify-center gap-2">
+              <Check className="w-4 h-4 text-green-500" strokeWidth={3} />
+              Envío inmediato
+            </p>
             <p className="text-muted-foreground">Sin esperas, comienza ya</p>
           </div>
         </div>

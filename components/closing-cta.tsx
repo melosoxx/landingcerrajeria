@@ -34,9 +34,11 @@ export default function ClosingCta() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <Button
             onClick={handleCheckout}
-            className="px-12 py-8 font-bold bg-[oklch(0.55_0.2_142)] hover:bg-[oklch(0.50_0.2_142)] text-checkout-foreground shadow-lg shadow-[oklch(0.55_0.2_142)]/50 hover:shadow-[oklch(0.55_0.2_142)]/70 transition-all duration-300 rounded-lg text-2xl"
+            className="relative overflow-hidden font-bold text-white text-lg sm:text-xl py-8 w-full sm:w-auto sm:px-12 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-green-500 hover:bg-green-600"
           >
-            EMPEZAR AHORA
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              EMPEZAR AHORA
+            </span>
           </Button>
         </div>
 

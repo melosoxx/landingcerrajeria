@@ -1,7 +1,9 @@
 "use client"
 
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { trackEventWithServer } from "@/lib/meta-pixel"
+import { Check } from "lucide-react"
 
 export default function HeroSection() {
   const handleCTA = () => {
@@ -15,8 +17,16 @@ export default function HeroSection() {
   }
 
   const handleSeeMore = () => {
-    const element = document.querySelector('[data-section="solution"]')
-    element?.scrollIntoView({ behavior: "smooth" })
+    const element = document.getElementById('resultado-ingresos')
+    element?.scrollIntoView({ behavior: "smooth", block: "center" })
+
+    // Abrir el acordeón después del scroll
+    setTimeout(() => {
+      const trigger = document.querySelector('[data-accordion-trigger="precios"]') as HTMLElement
+      if (trigger && trigger.getAttribute('data-state') === 'closed') {
+        trigger.click()
+      }
+    }, 800)
   }
 
   return (
@@ -43,6 +53,18 @@ export default function HeroSection() {
           Trabaja sin jefes, maneja tus propios horarios y genera en 15 minutos lo que otros tardan un día entero en ganar
         </p>
 
+        {/* Imagen de portada */}
+        <div className="my-2 flex justify-center animate-fade-in-up">
+          <div className="w-[280px] h-[200px] relative overflow-hidden rounded-xl border-2 border-primary/30 shadow-lg">
+            <Image
+              src="/tapa.jpeg"
+              alt="Portada del curso de cerrajería"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+
         {/* Secondary subheadline */}
         <p className="text-foreground/80 max-w-2xl mx-auto animate-fade-in-up text-center px-9 mt-5 mb-5 text-base">
           Sin horarios, sin jefe, generando ingresos que otros sueñan.
@@ -52,31 +74,36 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up mb-3.5">
           <Button
             onClick={handleCTA}
-            className="py-8 font-bold hover:bg-checkout/90 text-checkout-foreground shadow-lg shadow-checkout/50 hover:shadow-checkout/70 transition-all duration-300 rounded-lg bg-checkout text-xl tracking-normal px-4"
+            className="relative overflow-hidden font-bold text-white text-lg sm:text-xl py-8 px-10 sm:px-12 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-green-500 hover:bg-green-600"
           >
-            Acceder Ahora 
+            ACCEDER AHORA
           </Button>
           <Button
             onClick={handleSeeMore}
-            variant="outline"
-            className="px-10 py-8 font-bold border-2 border-primary text-primary hover:bg-primary/10 rounded-lg bg-transparent text-base my-1"
+            className="px-10 py-8 font-bold border-2 border-primary text-primary-foreground bg-primary hover:bg-primary/90 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 text-base my-1"
           >
-            Ver más
+            Ver tarifas de servicios
           </Button>
         </div>
 
         {/* Trust element */}
         <div className="flex sm:flex-row justify-center text-sm text-muted-foreground flex-col items-stretch gap-1 my-0">
           <div className="flex items-center gap-2 my-0">
-            <span className="text-primary text-lg">✓</span>
+            <div className="shrink-0 w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
+              <Check className="w-3 h-3 text-green-500" strokeWidth={3} />
+            </div>
             <span>Acceso inmediato por WhatsApp</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-primary text-lg">✓</span>
+            <div className="shrink-0 w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
+              <Check className="w-3 h-3 text-green-500" strokeWidth={3} />
+            </div>
             <span>Acceso de por vida</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-primary text-lg">✓</span>
+            <div className="shrink-0 w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
+              <Check className="w-3 h-3 text-green-500" strokeWidth={3} />
+            </div>
             <span>Garantía 100% satisfacción</span>
           </div>
         </div>

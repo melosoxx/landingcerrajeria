@@ -33,7 +33,7 @@ export default function ProblemSection() {
             Este oficio es <span className="text-primary">ideal para vos</span> si experimentaste alguna de estas situaciones
           </h2>
           <p className="text-lg text-muted-foreground">
-            ¿Te identificás con alguna de estas?
+            ¿Te identificás con alguna?
           </p>
         </div>
 

@@ -1,8 +1,26 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Image from "next/image"
 
 export default function SolutionSection() {
+  const [showVideo, setShowVideo] = useState(false)
+
+  // Timer de 5 segundos para la imagen
+  useEffect(() => {
+    if (!showVideo) {
+      const timer = setTimeout(() => {
+        setShowVideo(true)
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [showVideo])
+
+  // Cuando el video termina, volver a la imagen
+  const handleVideoEnd = () => {
+    setShowVideo(false)
+  }
+
   return (
     <section
       data-section="solution"
@@ -10,16 +28,35 @@ export default function SolutionSection() {
     >
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - Image */}
+          {/* Left side - Image/Video Carousel */}
           <div className="relative">
-            <div className="aspect-square rounded-2xl bg-muted border border-primary/20 overflow-hidden">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tapa%20base.jpeg-2UDmiq1oDhZowi7Q1PDQEBjFErZRwX.png"
-                alt="Herramientas profesionales de cerrajería"
-                fill
-                className="object-cover opacity-90 border-background border-0 rounded-2xl"
-                priority
-              />
+            <div className="aspect-square rounded-2xl bg-muted overflow-hidden relative">
+              {/* Imagen */}
+              <div className={`absolute inset-0 transition-opacity duration-700 ${showVideo ? 'opacity-0' : 'opacity-100'}`}>
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tapa%20base.jpeg-2UDmiq1oDhZowi7Q1PDQEBjFErZRwX.png"
+                  alt="Herramientas profesionales de cerrajería"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              {/* Video */}
+              <div className={`absolute inset-0 transition-opacity duration-700 ${showVideo ? 'opacity-100' : 'opacity-0'}`}>
+                {showVideo && (
+                  <video
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    playsInline
+                    onEnded={handleVideoEnd}
+                  >
+                    <source src="/refe3.mp4" type="video/mp4" />
+                  </video>
+                )}
+              </div>
+              {/* Borde amarillo siempre visible */}
+              <div className="absolute inset-0 rounded-2xl border-2 border-primary pointer-events-none"></div>
             </div>
           </div>
 

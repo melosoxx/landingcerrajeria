@@ -151,3 +151,19 @@ html {
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out;
 }
+
+/* Efecto glow pulsante para botón CTA (amarillo) */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px oklch(0.88 0.2 102 / 0.5),
+                0 0 40px oklch(0.88 0.2 102 / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px oklch(0.88 0.2 102 / 0.7),
+                0 0 60px oklch(0.88 0.2 102 / 0.4);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}

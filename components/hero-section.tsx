@@ -1,9 +1,16 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { trackEventWithServer } from "@/lib/meta-pixel"
 
 export default function HeroSection() {
   const handleCTA = () => {
+    trackEventWithServer("InitiateCheckout", {
+      content_name: "Curso Cerrajería",
+      content_category: "Curso Online",
+      value: 1,
+      currency: "ARS",
+    })
     window.location.href = "https://robertopugliese.shop/cart/45612584861869:1"
   }
 

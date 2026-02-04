@@ -82,7 +82,7 @@ export default function HeroSection() {
             onClick={handleSeeMore}
             className="px-10 py-8 font-bold border-2 border-primary text-primary-foreground bg-primary hover:bg-primary/90 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 text-base my-1"
           >
-            Ver tarifas de servicios
+            Cuanto gana un cerrajero?
           </Button>
         </div>
 

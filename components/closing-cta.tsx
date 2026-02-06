@@ -27,7 +27,7 @@ export default function ClosingCta() {
         </h2>
 
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Cada día que pasa sin aprender cerrajería es dinero que dejás de ganar. En una sola emergencia ya recuperás lo
+          Cada día que pasa sin aprender cerrajería es dinero que dejás en la mesa. En una sola emergencia ya recuperás lo
           que invertiste en el curso.
         </p>
 

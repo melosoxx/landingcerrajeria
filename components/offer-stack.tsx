@@ -82,7 +82,7 @@ export default function OfferStack() {
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-balance">Esto incluye el curso</h2>
           <p className="text-lg text-muted-foreground">
-            Todo lo que necesitás para empezar a ganar desde el primer día
+            Todo lo que necesitás para empezar a ejercer este gran oficio
           </p>
         </div>
 

@@ -50,7 +50,7 @@ export default function HeroSection() {
 
         {/* Subheadline with hook */}
         <p className="sm:text-2xl text-muted-foreground text-balance leading-relaxed max-w-2xl mx-auto animate-fade-in-up mb-2.5 mt-2.5 text-base">
-          Trabaja sin jefes, maneja tus propios horarios y genera en 15 minutos lo que otros tardan un día entero en ganar
+          Trabaja sin jefes, maneja tus propios horarios y genera en pocos minutos lo que otros tardan un día entero en ganar
         </p>
 
         {/* Imagen de portada */}
@@ -67,7 +67,7 @@ export default function HeroSection() {
 
         {/* Secondary subheadline */}
         <p className="text-foreground/80 max-w-2xl mx-auto animate-fade-in-up text-center px-9 mt-5 mb-5 text-base">
-          Sin horarios, sin jefe, generando ingresos que otros sueñan.
+          Sin horarios, sin jefes.
         </p>
 
         {/* CTA Buttons */}

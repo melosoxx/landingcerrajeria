@@ -9,19 +9,9 @@ export default function FaqSection() {
         "No. El curso te explica exactamente cuáles comprar, dónde, y cuánto gastar. Podés empezar con menos de $50k.",
     },
     {
-      question: "¿Cuánto tiempo tarda aprender?",
-      answer:
-        "Las técnicas básicas las aprendés en 2-3 días viendo los videos. La práctica es lo que te hace experto en 2-3 semanas.",
-    },
-    {
       question: "¿Cómo accedo al curso?",
       answer:
         "Inmediatamente después de comprar, recibirás acceso por WhatsApp o Google Drive. Sin esperas, comienza ya.",
-    },
-    {
-      question: "¿Es legal ejercer como cerrajero?",
-      answer:
-        "Sí, es totalmente legal. Muchos cerrajeros trabajan como independientes. El curso te enseña las técnicas profesionales.",
     },
     {
       question: "¿Hay garantía?",

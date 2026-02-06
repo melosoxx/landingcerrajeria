@@ -108,16 +108,16 @@ export default function SolutionSection() {
               <div className="flex gap-3">
                 <span className="text-primary text-xl font-bold shrink-0">✓</span>
                 <div>
-                  <h3 className="font-bold mb-1">Domina cambios de combinación</h3>
+                  <h3 className="font-bold mb-1">Domina cambios de combinación y tipos de cerraduras</h3>
                   <p className="text-sm text-muted-foreground">Métodos rápidos y seguros para todos los modelos</p>
                 </div>
               </div>
               <div className="flex gap-3">
                 <span className="text-primary text-xl font-bold shrink-0">✓</span>
                 <div>
-                  <h3 className="font-bold mb-1">Consigue tus herramientas</h3>
+                  <h3 className="font-bold mb-1">Conocé tus herramientas</h3>
                   <p className="text-sm text-muted-foreground">
-                    Guía completa de dónde comprar y cuáles son esenciales
+                    Familiarizate con tu equipo de trabajo y conocé cuáles son los esenciales para operar
                   </p>
                 </div>
               </div>

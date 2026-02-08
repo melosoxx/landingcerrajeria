@@ -15,10 +15,10 @@ export default function ClosingCta() {
   }
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background via-card to-background relative overflow-hidden">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-background via-card to-background relative overflow-hidden">
       {/* Background effect */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-transparent to-primary"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-primary via-transparent to-primary"></div>
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -34,7 +34,7 @@ export default function ClosingCta() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <Button
             onClick={handleCheckout}
-            className="relative overflow-hidden font-bold text-white text-lg sm:text-xl py-8 w-full sm:w-auto sm:px-12 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-green-500 hover:bg-green-600"
+            className="relative overflow-hidden font-bold text-white text-lg sm:text-xl py-8 w-full sm:w-auto sm:px-12 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-orange-500 hover:bg-orange-600"
           >
             <span className="relative z-10 flex items-center justify-center gap-2">
               EMPEZAR AHORA

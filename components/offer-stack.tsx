@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { trackEventWithServer } from "@/lib/meta-pixel"
 import { Check } from "lucide-react"
@@ -54,14 +55,6 @@ export default function OfferStack() {
     return () => clearTimeout(timeout)
   }, [])
 
-  const includes = [
-    { item: "Videos profesionales (4+ horas)" },
-    { item: "Manuales PDF detallados" },
-    { item: "Guía de herramientas (marcas y dónde comprar)" },
-    { item: "Técnicas avanzadas de apertura" },
-    { item: "Cambio de combinaciones paso a paso" },
-    { item: "Cálculo de precios y negociación" },
-  ]
 
   const handleCheckout = () => {
     trackEventWithServer("InitiateCheckout", {
@@ -76,45 +69,24 @@ export default function OfferStack() {
   return (
     <section
       data-section="offer"
-      className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-card to-background"
+      className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-card to-background"
     >
       <div className="max-w-4xl mx-auto bg-transparent">
         <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-balance">Esto incluye el curso</h2>
-          <p className="text-lg text-muted-foreground">
-            Todo lo que necesitás para empezar a ejercer este gran oficio
+          <h2 className="text-4xl sm:text-5xl font-bold mb-2 text-balance">Oferta válida solo por hoy:</h2>
+          <p className="text-lg text-primary font-semibold">
+            {new Date().toLocaleDateString("es-AR", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
           </p>
         </div>
 
         {/* Offer Stack */}
         <div className="rounded-2xl border-2 border-primary/30 p-8 sm:p-12 mb-8 px-0 bg-input">
-          <div className="space-y-4 mb-8">
-            {includes.map((item, index) => (
-              <div key={index} className="flex items-center gap-4 pb-4 border-b border-border/50 last:border-b-0 px-6">
-                <div className="shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <Check className="w-4 h-4 text-green-500" strokeWidth={3} />
-                </div>
-                <div className="flex-1">
-                  <p className="font-medium text-base">{item.item}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
           {/* Price section */}
           <div className="rounded-xl p-8 text-center border px-4 sm:px-8 border-yellow-300 bg-stone-900">
-
-            {/* Encabezado de urgencia */}
-            <div className="mb-6">
-              <p className="text-white font-bold text-lg uppercase tracking-wide">Oferta válida solo por hoy:</p>
-              <p className="text-primary font-semibold">
-                {new Date().toLocaleDateString("es-AR", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
-              </p>
-            </div>
 
             {/* Contador de personas viendo */}
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -139,7 +111,7 @@ export default function OfferStack() {
             </div>
 
             {/* Etiqueta DESCUENTO ESPECIAL */}
-            <div className="inline-block bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider px-4 py-1 rounded mb-3">
+            <div className="inline-block bg-orange-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded mb-3">
               Descuento Especial
             </div>
 
@@ -165,6 +137,17 @@ export default function OfferStack() {
                   ACCEDER AL SISTEMA COMPLETO
                 </span>
               </Button>
+            </div>
+
+            {/* Safe payment */}
+            <div className="flex justify-center mb-4">
+              <Image
+                src="/safepayment.png"
+                alt="Métodos de pago seguros"
+                width={360}
+                height={50}
+                className="opacity-70"
+              />
             </div>
 
             {/* Etiqueta transferencia bancaria */}

@@ -3,7 +3,6 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { trackEventWithServer } from "@/lib/meta-pixel"
-import { Check } from "lucide-react"
 
 export default function HeroSection() {
   const handleCTA = () => {
@@ -16,13 +15,11 @@ export default function HeroSection() {
     window.location.href = "https://robertopugliese.shop/cart/45612584861869:1"
   }
 
-  const handleSeeMore = () => {
-    const element = document.getElementById('resultado-ingresos')
-    element?.scrollIntoView({ behavior: "smooth", block: "center" })
+  const handleScrollToPrecios = () => {
+    const trigger = document.querySelector('[data-accordion-trigger="precios"]') as HTMLElement
+    trigger?.scrollIntoView({ behavior: "smooth", block: "center" })
 
-    // Abrir el acordeón después del scroll
     setTimeout(() => {
-      const trigger = document.querySelector('[data-accordion-trigger="precios"]') as HTMLElement
       if (trigger && trigger.getAttribute('data-state') === 'closed') {
         trigger.click()
       }
@@ -30,7 +27,7 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background via-background to-card overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-linear-to-b from-background via-background to-card overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute top-10 right-10 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
@@ -40,7 +37,7 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Attention grabber */}
         <div className="inline-block px-4 py-2 rounded-full border border-primary/20 mb-2.5 bg-border mt-2.5">
-          <p className="font-semibold text-primary text-xs text-center">🔓 La oportunidad que estabas esperando</p>
+          <p className="font-semibold text-primary text-xs text-center">Curso 100% Online</p>
         </div>
 
         {/* Main headline */}
@@ -48,14 +45,9 @@ export default function HeroSection() {
           Convertite en <span className="text-primary">Cerrajero Certificado</span>
         </h1>
 
-        {/* Subheadline with hook */}
-        <p className="sm:text-2xl text-muted-foreground text-balance leading-relaxed max-w-2xl mx-auto animate-fade-in-up mb-2.5 mt-2.5 text-base">
-          Trabaja sin jefes, maneja tus propios horarios y genera en pocos minutos lo que otros tardan un día entero en ganar
-        </p>
-
         {/* Imagen de portada */}
         <div className="my-2 flex justify-center animate-fade-in-up">
-          <div className="w-[280px] h-[200px] relative overflow-hidden rounded-xl border-2 border-primary/30 shadow-lg">
+          <div className="w-70 h-50 relative overflow-hidden rounded-xl border-2 border-primary/30 shadow-lg">
             <Image
               src="/tapa.jpeg"
               alt="Portada del curso de cerrajería"
@@ -65,48 +57,27 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Secondary subheadline */}
-        <p className="text-foreground/80 max-w-2xl mx-auto animate-fade-in-up text-center px-9 mt-5 mb-5 text-base">
-          Sin horarios, sin jefes.
+        {/* Subheadline with hook */}
+        <p className="sm:text-2xl text-muted-foreground text-balance leading-relaxed max-w-2xl mx-auto animate-fade-in-up mt-5 mb-5 text-base">
+          Ejercé una de las profesiones más escasas y más demandadas del mercado
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up mb-3.5">
+        <div className="flex flex-col items-center gap-4 justify-center animate-fade-in-up mb-6">
           <Button
             onClick={handleCTA}
-            className="relative overflow-hidden font-bold text-white text-lg sm:text-xl py-8 px-10 sm:px-12 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-green-500 hover:bg-green-600"
+            className="relative overflow-hidden font-bold text-white text-xl sm:text-2xl tracking-widest py-8 px-14 sm:px-20 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-orange-500 hover:bg-orange-600"
           >
             ACCEDER AHORA
           </Button>
           <Button
-            onClick={handleSeeMore}
-            className="px-10 py-8 font-bold border-2 border-primary text-primary-foreground bg-primary hover:bg-primary/90 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 text-base my-1"
+            onClick={handleScrollToPrecios}
+            className="py-3 px-6 text-sm font-semibold bg-primary hover:bg-primary/85 text-primary-foreground rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
           >
-            Cuanto gana un cerrajero?
+            ¿Cuánto gana un cerrajero?
           </Button>
         </div>
 
-        {/* Trust element */}
-        <div className="flex sm:flex-row justify-center text-sm text-muted-foreground flex-col items-stretch gap-1 my-0">
-          <div className="flex items-center gap-2 my-0">
-            <div className="shrink-0 w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
-              <Check className="w-3 h-3 text-green-500" strokeWidth={3} />
-            </div>
-            <span>Acceso inmediato por WhatsApp</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="shrink-0 w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
-              <Check className="w-3 h-3 text-green-500" strokeWidth={3} />
-            </div>
-            <span>Acceso de por vida</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="shrink-0 w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
-              <Check className="w-3 h-3 text-green-500" strokeWidth={3} />
-            </div>
-            <span>Garantía 100% satisfacción</span>
-          </div>
-        </div>
       </div>
     </section>
   )

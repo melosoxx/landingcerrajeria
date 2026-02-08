@@ -56,6 +56,31 @@ export default function OfferStack() {
   }, [])
 
 
+  // Contador regresivo hasta fin del día
+  const [timeLeft, setTimeLeft] = useState({ hours: "00", minutes: "00", seconds: "00" })
+
+  useEffect(() => {
+    const updateTimer = () => {
+      const now = new Date()
+      const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999)
+      const diff = endOfDay.getTime() - now.getTime()
+
+      const hours = Math.floor(diff / (1000 * 60 * 60))
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+      setTimeLeft({
+        hours: String(hours).padStart(2, "0"),
+        minutes: String(minutes).padStart(2, "0"),
+        seconds: String(seconds).padStart(2, "0"),
+      })
+    }
+
+    updateTimer()
+    const interval = setInterval(updateTimer, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
   const handleCheckout = () => {
     trackEventWithServer("InitiateCheckout", {
       content_name: "Curso Cerrajería",
@@ -81,6 +106,24 @@ export default function OfferStack() {
               year: "numeric",
             })}
           </p>
+
+          {/* Contador regresivo */}
+          <div className="flex items-center justify-center gap-3 mt-4">
+            <div className="flex flex-col items-center bg-card border border-primary/30 rounded-lg px-4 py-2 min-w-16">
+              <span className="text-2xl sm:text-3xl font-bold text-primary font-mono">{timeLeft.hours}</span>
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Horas</span>
+            </div>
+            <span className="text-2xl font-bold text-primary">:</span>
+            <div className="flex flex-col items-center bg-card border border-primary/30 rounded-lg px-4 py-2 min-w-16">
+              <span className="text-2xl sm:text-3xl font-bold text-primary font-mono">{timeLeft.minutes}</span>
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Min</span>
+            </div>
+            <span className="text-2xl font-bold text-primary">:</span>
+            <div className="flex flex-col items-center bg-card border border-primary/30 rounded-lg px-4 py-2 min-w-16">
+              <span className="text-2xl sm:text-3xl font-bold text-primary font-mono">{timeLeft.seconds}</span>
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Seg</span>
+            </div>
+          </div>
         </div>
 
         {/* Offer Stack */}
@@ -124,7 +167,7 @@ export default function OfferStack() {
             {/* Etiqueta 3 cuotas */}
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-2 mb-6">
               <span>💳</span>
-              <span className="text-sm font-semibold text-primary">Hasta 3 cuotas sin interés</span>
+              <span className="text-sm font-semibold text-primary">Hasta 3 cuotas sin interés de $4.999</span>
             </div>
 
             {/* Botón CTA Mejorado - Amarillo */}
@@ -134,7 +177,7 @@ export default function OfferStack() {
                 className="relative overflow-hidden font-bold text-white text-lg sm:text-xl py-8 w-full sm:w-auto sm:px-12 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-green-500 hover:bg-green-600"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
-                  ACCEDER AL SISTEMA COMPLETO
+                  DESCARGAR AHORA
                 </span>
               </Button>
             </div>
@@ -153,43 +196,20 @@ export default function OfferStack() {
             {/* Etiqueta transferencia bancaria */}
             <div className="inline-flex items-center gap-2 bg-muted/30 border border-border rounded-full px-4 py-2 mb-6">
               <span>🏦</span>
-              <span className="text-xs text-muted-foreground">También podés pagar por transferencia bancaria – entrega inmediata</span>
+              <span className="text-xs text-muted-foreground">También podés pagar por transferencia bancaria</span>
             </div>
 
-            {/* Lista de beneficios */}
-            <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-              <Check className="w-4 h-4 text-green-500" strokeWidth={3} />
-              <span>Descarga segura</span>
+            {/* Garantía */}
+            <div className="text-center mt-2">
+              <p className="font-bold text-primary text-lg sm:text-xl flex items-center justify-center gap-3 tracking-wide">
+                <Check className="w-5 h-5 text-green-500" strokeWidth={3} />
+                Garantía 7 días
+              </p>
+              <p className="text-muted-foreground text-sm mt-1">Si no te gusta, devolución total</p>
             </div>
           </div>
         </div>
 
-        {/* Trust badges */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center text-center text-sm">
-          <div>
-            <p className="font-semibold text-primary mb-1 flex items-center justify-center gap-2">
-              <Check className="w-4 h-4 text-green-500" strokeWidth={3} />
-              Garantía 7 días
-            </p>
-            <p className="text-muted-foreground">Si no te gusta, devolución total</p>
-          </div>
-          <div className="hidden sm:block w-px bg-border/50"></div>
-          <div>
-            <p className="font-semibold text-primary mb-1 flex items-center justify-center gap-2">
-              <Check className="w-4 h-4 text-green-500" strokeWidth={3} />
-              Soporte 24/7
-            </p>
-            <p className="text-muted-foreground">Dudas por WhatsApp</p>
-          </div>
-          <div className="hidden sm:block w-px bg-border/50"></div>
-          <div>
-            <p className="font-semibold text-primary mb-1 flex items-center justify-center gap-2">
-              <Check className="w-4 h-4 text-green-500" strokeWidth={3} />
-              Envío inmediato
-            </p>
-            <p className="text-muted-foreground">Sin esperas, comienza ya</p>
-          </div>
-        </div>
       </div>
     </section>
   )

@@ -45,7 +45,7 @@ export default function OfferStack() {
     const timeout = setTimeout(
       () => {
         setSpotsLeft((prev) => {
-          if (prev > 2) return Math.random() > 0.5 ? 2 : 1
+          if (prev > 2) return Math.random() > 0.5 ? 3 : 2
           return prev
         })
       },

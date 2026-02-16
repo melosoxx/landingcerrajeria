@@ -52,24 +52,19 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Subheadline with hook */}
-        <p className="sm:text-2xl text-muted-foreground text-balance leading-relaxed max-w-2xl mx-auto animate-fade-in-up mt-5 mb-5 text-base">
-          Ejercé una de las profesiones más escasas y más demandadas del mercado
-        </p>
-
         {/* CTA Buttons */}
         <div className="flex flex-col items-center gap-4 justify-center animate-fade-in-up mb-6">
-          <Button
-            onClick={handleCTA}
-            className="relative overflow-hidden font-bold text-white text-xl sm:text-2xl tracking-widest py-8 px-14 sm:px-20 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-orange-500 hover:bg-orange-600"
-          >
-            ACCEDER AHORA
-          </Button>
           <Button
             onClick={handleScrollToPrecios}
             className="py-3 px-6 text-sm font-semibold bg-primary hover:bg-primary/85 text-primary-foreground rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
           >
             ¿Cuánto gana un cerrajero?
+          </Button>
+          <Button
+            onClick={handleCTA}
+            className="relative overflow-hidden font-bold text-white text-xl sm:text-2xl tracking-widest py-8 px-14 sm:px-20 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse bg-orange-500 hover:bg-orange-600"
+          >
+            ACCEDER AHORA
           </Button>
         </div>
 

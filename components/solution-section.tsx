@@ -92,27 +92,27 @@ export default function SolutionSection() {
               La solución: Convertite en <span className="text-primary">cerrajero profesional</span>
             </h2>
 
-            <p className="text-lg text-muted-foreground mb-6">
+            <p className="text-lg text-orange-400 mb-6 drop-shadow-[0_0_8px_rgba(249,115,22,0.3)]">
               La cerrajería es uno de los oficios con mayor demanda y menos profesionales. Las urgencias no tienen
               horario.
             </p>
 
             <div className="space-y-4 mb-8">
-              <div className="flex gap-3">
+              <div className="flex gap-3 border border-orange-500/40 rounded-xl p-4 shadow-[0_0_12px_rgba(249,115,22,0.15)] transition-all duration-300 cursor-pointer hover:border-orange-400/70 hover:shadow-[0_0_20px_rgba(249,115,22,0.35)] hover:scale-[1.02] active:scale-[0.98]">
                 <span className="text-primary text-xl font-bold shrink-0">✓</span>
                 <div>
                   <h3 className="font-bold mb-1">Aprende a abrir puertas sin dañarlas</h3>
                   <p className="text-sm text-muted-foreground">Técnicas profesionales para todo tipo de cerraduras</p>
                 </div>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 border border-orange-500/40 rounded-xl p-4 shadow-[0_0_12px_rgba(249,115,22,0.15)] transition-all duration-300 cursor-pointer hover:border-orange-400/70 hover:shadow-[0_0_20px_rgba(249,115,22,0.35)] hover:scale-[1.02] active:scale-[0.98]">
                 <span className="text-primary text-xl font-bold shrink-0">✓</span>
                 <div>
                   <h3 className="font-bold mb-1">Domina cambios de combinación y tipos de cerraduras</h3>
                   <p className="text-sm text-muted-foreground">Métodos rápidos y seguros para todos los modelos</p>
                 </div>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 border border-orange-500/40 rounded-xl p-4 shadow-[0_0_12px_rgba(249,115,22,0.15)] transition-all duration-300 cursor-pointer hover:border-orange-400/70 hover:shadow-[0_0_20px_rgba(249,115,22,0.35)] hover:scale-[1.02] active:scale-[0.98]">
                 <span className="text-primary text-xl font-bold shrink-0">✓</span>
                 <div>
                   <h3 className="font-bold mb-1">Conocé tus herramientas</h3>

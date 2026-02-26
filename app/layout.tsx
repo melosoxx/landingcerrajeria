@@ -1,12 +1,18 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const wolfpack = localFont({
+  src: "../public/fonts/wolfpack-Regular.ttf",
+  variable: "--font-wolfpack",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Curso de Cerrajería Online - Gana 180k por Servicio",
@@ -73,7 +79,7 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className={`font-sans antialiased`}>
+      <body className={`font-sans antialiased ${wolfpack.variable}`}>
         {children}
         <Analytics />
       </body>

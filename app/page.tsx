@@ -8,7 +8,7 @@ import ClosingCta from "@/components/closing-cta"
 
 export default function Home() {
   return (
-    <main className="bg-background text-foreground overflow-hidden">
+    <main className="bg-background text-foreground overflow-hidden font-[family-name:var(--font-wolfpack)]">
       <HeroSection />
       <SolutionSection />
       <OfferStack />

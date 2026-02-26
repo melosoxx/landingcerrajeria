@@ -104,7 +104,7 @@ export default function OfferStack() {
   return (
     <section
       data-section="offer"
-      className="py-10 sm:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-card to-background"
+      className="py-10 sm:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-card to-background font-sans"
     >
       <div className="max-w-4xl mx-auto bg-transparent">
         <div className="text-center mb-6 sm:mb-12">

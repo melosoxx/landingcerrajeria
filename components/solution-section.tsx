@@ -50,7 +50,7 @@ export default function SolutionSection() {
   return (
     <section
       data-section="solution"
-      className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-card"
+      className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-card font-sans"
     >
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -88,8 +88,8 @@ export default function SolutionSection() {
 
           {/* Right side - Copy */}
           <div className="">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-balance">
-              La solución: Convertite en <span className="text-primary">cerrajero profesional</span>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-balance font-[family-name:var(--font-wolfpack)]">
+              Convertite en <span className="text-primary">Cerrajero Profesional</span>
             </h2>
 
             <p className="text-lg text-orange-400 mb-6 drop-shadow-[0_0_8px_rgba(249,115,22,0.3)]">
@@ -123,7 +123,7 @@ export default function SolutionSection() {
               </div>
             </div>
 
-            <p id="resultado-ingresos" className="text-primary font-bold text-3xl">↓ Resultado: Generá ingresos desde tu primer trabajo</p>
+            <p id="resultado-ingresos" className="text-primary font-bold text-3xl">↓ Generá ingresos desde tu primer trabajo</p>
 
             <Accordion type="single" collapsible className="mt-6">
               <AccordionItem value="precios" className="border border-border/50 rounded-xl bg-card/50">

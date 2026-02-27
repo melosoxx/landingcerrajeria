@@ -10,9 +10,9 @@ const tablasPrecio = [
     headerText: "text-green-400",
     borderColor: "border-green-500/30",
     servicios: [
-      { servicio: "Apertura Simple", franja: "Mañana", precio: "$75.000" },
-      { servicio: "Cambio de combinación / cilindro", franja: "Mañana", precio: "$50.000" },
-      { servicio: "Apertura de vehículo", franja: "Mañana", precio: "$85.000" },
+      { servicio: "Cambio de combinación", franja: "Mañana / Tarde", precio: "$50.000" },
+      { servicio: "Apertura Simple", franja: "Mañana / Tarde", precio: "$75.000" },
+      { servicio: "Apertura de vehículo", franja: "Mañana / Tarde", precio: "$85.000" },
     ],
   },
   {
@@ -21,10 +21,8 @@ const tablasPrecio = [
     headerText: "text-red-400",
     borderColor: "border-red-500/30",
     servicios: [
-      { servicio: "Apertura de Urgencia", franja: "Tarde", precio: "$130.000" },
-      { servicio: "Apertura Nocturna", franja: "Noche", precio: "$180.000" },
-      { servicio: "Apertura Madrugada", franja: "Madrugada", precio: "$150.000" },
-      { servicio: "Domingos y Feriados", franja: "Mañana", precio: "$160.000" },
+      { servicio: "Apertura Nocturna", franja: "Noche", precio: "$150.000" },
+      { servicio: "Apertura Madrugada", franja: "Madrugada", precio: "$180.000" },
     ],
   },
   {
@@ -33,7 +31,7 @@ const tablasPrecio = [
     headerText: "text-blue-400",
     borderColor: "border-blue-500/30",
     servicios: [
-      { servicio: "Puerta Blindada / Judicial", franja: "Mañana", precio: "$230.000" },
+      { servicio: "Puerta Blindada / Judicial", franja: "Full time", precio: "$230.000" },
     ],
   },
 ]
@@ -57,7 +55,7 @@ export default function SolutionSection() {
   return (
     <section
       data-section="solution"
-      className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-card font-sans"
+      className="pt-16 pb-8 sm:pt-24 sm:pb-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-card font-sans"
     >
       <div className="max-w-5xl mx-auto">
         {/* Título y subtítulo arriba del video */}
@@ -124,7 +122,7 @@ export default function SolutionSection() {
           </div>
         </div>
 
-        <h3 id="resultado-ingresos" className="text-primary font-bold text-3xl font-[family-name:var(--font-wolfpack)]">Tabla de precios</h3>
+        <h3 id="resultado-ingresos" className="text-primary font-bold text-3xl font-[family-name:var(--font-wolfpack)]">Valores de referencia para tus servicios</h3>
 
         <div className="mt-6 space-y-6">
           {tablasPrecio.map((tabla) => (

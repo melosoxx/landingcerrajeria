@@ -184,3 +184,17 @@ html {
 .animate-glow-bg {
   animation: glow-bg 3s ease-in-out infinite;
 }
+
+/* Efecto flotante para el mockup */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}

@@ -144,7 +144,7 @@ export default function OfferStack() {
               {valueStackItems.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 border border-orange-500/40 rounded-xl py-2 px-3 shadow-[0_0_12px_rgba(249,115,22,0.15)] bg-card/50"
+                  className="flex items-center gap-3 border border-orange-500/40 rounded-xl py-2 px-3 shadow-[0_0_12px_rgba(249,115,22,0.15)] bg-gradient-to-r from-orange-500/10 via-orange-500/5 to-transparent"
                 >
                   <div className="shrink-0 w-8 h-8 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
                     <item.icon className="w-4 h-4 text-primary" />
@@ -153,7 +153,7 @@ export default function OfferStack() {
                     <p className="font-bold text-sm sm:text-base">{item.name}</p>
                   </div>
                   <div className="shrink-0 text-right">
-                    <p className="text-sm sm:text-base font-semibold text-muted-foreground line-through">
+                    <p className="text-sm sm:text-base font-semibold text-yellow-400 line-through decoration-orange-500 decoration-2">
                       ${item.value.toLocaleString("es-AR")}
                     </p>
                   </div>
@@ -163,9 +163,9 @@ export default function OfferStack() {
 
             {/* Valor real */}
             <div className="mt-4 pt-3 border-t border-primary/20 text-center">
-              <p className="text-xl sm:text-2xl text-muted-foreground">
+              <p className="text-2xl sm:text-3xl text-muted-foreground">
                 Valor real{" "}
-                <span className="line-through text-2xl sm:text-3xl font-bold">
+                <span className="line-through decoration-orange-500 decoration-2 text-3xl sm:text-4xl font-bold text-yellow-400">
                   ${totalValue.toLocaleString("es-AR")}
                 </span>
               </p>
@@ -173,7 +173,7 @@ export default function OfferStack() {
           </div>
 
           {/* Price section */}
-          <div className="rounded-xl p-6 text-center border px-4 sm:px-8 border-yellow-300 bg-stone-900">
+          <div className="rounded-xl p-6 text-center border px-4 sm:px-8 border-yellow-300 bg-gradient-to-b from-stone-900 via-neutral-950 to-stone-900">
 
             {/* Etiqueta LLEVALO HOY POR */}
             <div className="inline-block bg-orange-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded mb-3">

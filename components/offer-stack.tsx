@@ -182,7 +182,7 @@ export default function OfferStack() {
 
             {/* Precios */}
             <div className="mb-4">
-              <p className="text-4xl sm:text-5xl font-bold text-primary">$14.999 ARS</p>
+              <p className="text-4xl sm:text-5xl font-bold text-primary">$17.999 ARS</p>
             </div>
 
             {/* Etiqueta 3 cuotas */}

@@ -40,17 +40,11 @@ export default function SolutionSection() {
   const [showVideo, setShowVideo] = useState(false)
 
   useEffect(() => {
-    if (!showVideo) {
-      const timer = setTimeout(() => {
-        setShowVideo(true)
-      }, 5000)
-      return () => clearTimeout(timer)
-    }
-  }, [showVideo])
-
-  const handleVideoEnd = () => {
-    setShowVideo(false)
-  }
+    const timer = setTimeout(() => {
+      setShowVideo(true)
+    }, 5000)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <section
@@ -106,17 +100,14 @@ export default function SolutionSection() {
                 priority
               />
             </div>
-            <div className={`absolute inset-0 transition-opacity duration-700 ${showVideo ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`absolute inset-0 overflow-hidden transition-opacity duration-700 ${showVideo ? 'opacity-100' : 'opacity-0'}`}>
               {showVideo && (
-                <video
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  muted
-                  playsInline
-                  onEnded={handleVideoEnd}
-                >
-                  <source src="/refe3.mp4" type="video/mp4" />
-                </video>
+                <iframe
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] pointer-events-none"
+                  src="https://www.youtube.com/embed/sX64-duRG_Y?autoplay=1&mute=1&controls=0&loop=1&playlist=sX64-duRG_Y&playsinline=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&disablekb=1"
+                  allow="autoplay; encrypted-media"
+                  title="Video de referencia"
+                />
               )}
             </div>
           </div>

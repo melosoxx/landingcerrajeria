@@ -206,7 +206,7 @@ export default function OfferStack() {
             {/* Safe payment */}
             <div className="flex justify-center mb-4">
               <Image
-                src="/safepayment.png"
+                src="/safepayment.webp"
                 alt="Métodos de pago seguros"
                 width={360}
                 height={50}

@@ -15,7 +15,7 @@ export default function HeroSection() {
 
       {/* Background image */}
       <Image
-        src="/background.png"
+        src="/background.webp"
         alt=""
         fill
         className="object-cover"
@@ -47,7 +47,7 @@ export default function HeroSection() {
             <div className="w-64 h-64 bg-orange-500 rounded-full blur-3xl animate-glow-bg"></div>
           </div>
           <Image
-            src="/mockups_nobackground.png"
+            src="/mockups_nobackground.webp"
             alt="Portada del curso de cerrajería"
             width={500}
             height={400}

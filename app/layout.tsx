@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     "Aprende cerrajería desde cero. Acceso inmediato, sin horarios. Gana desde tu primer trabajo. Acceso de por vida a videos y manuales PDF.",
   generator: "v0.app",
   icons: {
-    icon: "/mockups_nobackground.png",
-    apple: "/mockups_nobackground.png",
+    icon: "/mockups_nobackground.webp",
+    apple: "/mockups_nobackground.webp",
   },
 }
 

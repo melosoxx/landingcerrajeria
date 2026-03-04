@@ -1,10 +1,10 @@
-"use client"
+import dynamic from "next/dynamic"
 import HeroSection from "@/components/hero-section"
-import SolutionSection from "@/components/solution-section"
-import OfferStack from "@/components/offer-stack"
-import TestimonialsSection from "@/components/testimonials-section"
-import FaqSection from "@/components/faq-section"
-import ClosingCta from "@/components/closing-cta"
+
+const SolutionSection = dynamic(() => import("@/components/solution-section"))
+const OfferStack = dynamic(() => import("@/components/offer-stack"))
+const FaqSection = dynamic(() => import("@/components/faq-section"))
+const ClosingCta = dynamic(() => import("@/components/closing-cta"))
 
 export default function Home() {
   return (
@@ -12,7 +12,6 @@ export default function Home() {
       <HeroSection />
       <SolutionSection />
       <OfferStack />
-      <TestimonialsSection />
       <FaqSection />
       <ClosingCta />
     </main>

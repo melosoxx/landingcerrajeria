@@ -52,6 +52,7 @@ export default function SolutionSection() {
               src="https://www.youtube.com/embed/n1-79BWOzm4?autoplay=1&mute=1&controls=0&loop=1&playlist=n1-79BWOzm4&playsinline=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&disablekb=1"
               allow="autoplay; encrypted-media"
               title="Video de referencia"
+              loading="lazy"
             />
           </div>
         </div>

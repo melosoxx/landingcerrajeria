@@ -1,7 +1,3 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import Image from "next/image"
 
 const tablasPrecio = [
   {
@@ -37,15 +33,6 @@ const tablasPrecio = [
 ]
 
 export default function SolutionSection() {
-  const [showVideo, setShowVideo] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowVideo(true)
-    }, 5000)
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
     <section
       data-section="solution"
@@ -60,25 +47,12 @@ export default function SolutionSection() {
         {/* Video */}
         <div className="relative mb-8">
           <div className="aspect-video rounded-2xl bg-muted overflow-hidden relative">
-            <div className={`absolute inset-0 transition-opacity duration-700 ${showVideo ? 'opacity-0' : 'opacity-100'}`}>
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tapa%20base.jpeg-2UDmiq1oDhZowi7Q1PDQEBjFErZRwX.png"
-                alt="Herramientas profesionales de cerrajería"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-            <div className={`absolute inset-0 overflow-hidden transition-opacity duration-700 ${showVideo ? 'opacity-100' : 'opacity-0'}`}>
-              {showVideo && (
-                <iframe
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] pointer-events-none"
-                  src="https://www.youtube.com/embed/n1-79BWOzm4?autoplay=1&mute=1&controls=0&loop=1&playlist=n1-79BWOzm4&playsinline=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&disablekb=1"
-                  allow="autoplay; encrypted-media"
-                  title="Video de referencia"
-                />
-              )}
-            </div>
+            <iframe
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] pointer-events-none"
+              src="https://www.youtube.com/embed/n1-79BWOzm4?autoplay=1&mute=1&controls=0&loop=1&playlist=n1-79BWOzm4&playsinline=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&disablekb=1"
+              allow="autoplay; encrypted-media"
+              title="Video de referencia"
+            />
           </div>
         </div>
 

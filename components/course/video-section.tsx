@@ -24,14 +24,20 @@ export function VideoSection() {
             className="group relative flex flex-col overflow-hidden rounded-xl bg-card border border-border/50 hover:border-primary/50 transition-all hover:shadow-xl hover:scale-[1.02] text-left"
           >
             {/* Video Thumbnail */}
-            <div className="relative aspect-video overflow-hidden bg-muted">
+            <div className="relative w-full aspect-video overflow-hidden bg-muted">
               <img
-                src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
                 alt={video.title}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="w-full h-full object-cover"
+                loading="eager"
                 onError={(e) => {
-                  // Fallback a la miniatura por defecto si falla
-                  e.currentTarget.src = `https://img.youtube.com/vi/${video.youtubeId}/default.jpg`;
+                  // Fallback a hqdefault si maxres falla
+                  const target = e.currentTarget;
+                  if (target.src.includes('maxresdefault')) {
+                    target.src = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
+                  } else if (target.src.includes('hqdefault')) {
+                    target.src = `https://img.youtube.com/vi/${video.youtubeId}/default.jpg`;
+                  }
                 }}
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">

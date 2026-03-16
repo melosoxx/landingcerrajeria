@@ -26,16 +26,14 @@ export function VideoSection() {
             {/* Video Thumbnail */}
             <div className="relative w-full aspect-video overflow-hidden bg-muted">
               <img
-                src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
+                src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
                 alt={video.title}
                 className="w-full h-full object-cover"
                 loading="eager"
                 onError={(e) => {
-                  // Fallback a hqdefault si maxres falla
+                  // Fallback a default si hqdefault falla
                   const target = e.currentTarget;
-                  if (target.src.includes('maxresdefault')) {
-                    target.src = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
-                  } else if (target.src.includes('hqdefault')) {
+                  if (!target.src.includes('default.jpg')) {
                     target.src = `https://img.youtube.com/vi/${video.youtubeId}/default.jpg`;
                   }
                 }}

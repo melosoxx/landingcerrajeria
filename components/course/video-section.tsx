@@ -34,9 +34,9 @@ export function VideoSection() {
                   e.currentTarget.src = `https://img.youtube.com/vi/${video.youtubeId}/default.jpg`;
                 }}
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition-colors">
-                <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-primary/90 border-2 border-primary group-hover:bg-primary group-hover:scale-110 transition-all shadow-lg">
-                  <Play className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground ml-0.5" fill="currentColor" />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-yellow-400 group-hover:bg-yellow-300 group-hover:scale-110 transition-all shadow-xl">
+                  <Play className="h-6 w-6 sm:h-7 sm:w-7 text-black ml-0.5" fill="currentColor" />
                 </div>
               </div>
             </div>

@@ -48,8 +48,8 @@ export default function SolutionSection() {
         <div className="relative mb-8">
           <div className="aspect-video rounded-2xl bg-muted overflow-hidden relative">
             <iframe
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] pointer-events-none"
-              src="https://www.youtube.com/embed/n1-79BWOzm4?autoplay=1&mute=1&controls=0&loop=1&playlist=n1-79BWOzm4&playsinline=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&disablekb=1"
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              src="https://www.youtube.com/embed/_o1hdi48Mjg?autoplay=1&mute=1&controls=0&loop=1&playlist=_o1hdi48Mjg&playsinline=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&disablekb=1"
               allow="autoplay; encrypted-media"
               title="Video de referencia"
               loading="lazy"

@@ -31,13 +31,12 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Main headline */}
         <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold leading-tight text-balance animate-fade-in-up mb-1">
-          Convertite en <span className="text-primary">Cerrajero Certificado</span>
+          Aprende Cerrajería <span className="text-primary">Desde Cero</span>
         </h1>
 
         {/* Subtítulo */}
         <p className="text-white text-sm sm:text-base max-w-2xl mx-auto mb-2 animate-fade-in-up font-sans">
-          El manual que usan los cerrajeros que facturan <span className="text-primary font-semibold">$200.000 por servicio</span><br />
-          y que nadie te enseña en ningún curso.
+          Capacitate desde cero con nuestro manual, diseñado para que puedas empezar a hacer tus primeros servicios como <span className="text-primary font-semibold">cerrajero independiente</span>.
         </p>
 
         {/* Imagen de portada con glow naranja centrado */}

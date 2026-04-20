@@ -98,7 +98,7 @@ export default function OfferStack() {
       value: 1,
       currency: "ARS",
     })
-    window.location.href = "https://robertopugliese.shop/cart/45612584861869:1"
+    window.location.href = "https://robertopugliese.shop/cart/48760681398523:1"
   }
 
   return (

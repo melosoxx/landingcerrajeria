@@ -8,7 +8,7 @@
 |------------------|------------------------------------------------------------|
 | Versión del mapa | 1.1                                                        |
 | Fecha            | 2026-04-20                                                 |
-| Commit ref       | *(actualizar tras commit)*                                 |
+| Commit ref       | `9977207b86e3e80e7bc79e2c28866fe2fca49380`                 |
 | Rama             | `master`                                                   |
 | Stack            | Next.js 16 · React 19 · TypeScript · Tailwind v4 · shadcn/ui |
 

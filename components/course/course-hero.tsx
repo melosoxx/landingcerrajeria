@@ -1,4 +1,5 @@
-import { BookOpen, FileText, Video } from "lucide-react";
+import Link from "next/link";
+import { BookOpen, FileText, Video, GraduationCap, FolderOpen } from "lucide-react";
 
 export function CourseHero() {
   return (
@@ -9,7 +10,7 @@ export function CourseHero() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 backdrop-blur-sm" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.88_0.2_102/0.06)_0%,transparent_70%)]" />
-      <div className="relative mx-auto max-w-5xl px-4 py-10 md:py-24 text-center">
+      <div className="relative mx-auto max-w-5xl px-4 py-10 md:py-20 text-center">
         <h1 className="font-[family-name:var(--font-wolfpack)] text-[1.75rem] sm:text-4xl md:text-6xl tracking-wide text-foreground animate-fade-in-up drop-shadow-[0_0_25px_oklch(0.88_0.2_102/0.3)]">
           Academia del Cerrajero
         </h1>
@@ -37,6 +38,35 @@ export function CourseHero() {
               <strong className="text-foreground">+4hs</strong> de Prácticas
             </span>
           </div>
+        </div>
+
+        {/* Dos modos de acceso */}
+        <div className="mt-8 md:mt-10 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto animate-fade-in-up [animation-delay:450ms] [animation-fill-mode:backwards]">
+          <div className="rounded-2xl border border-primary/30 bg-primary/10 backdrop-blur-md px-5 py-4 text-left space-y-2">
+            <div className="flex items-center gap-2">
+              <GraduationCap className="h-5 w-5 text-primary shrink-0" />
+              <span className="text-sm font-semibold text-foreground">Para obtener el Certificado</span>
+            </div>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Completá los 13 módulos respondiendo los cuestionarios con un mínimo del 80% de aciertos. Al finalizar, podrás descargar tu certificado oficial de cerrajero.
+            </p>
+          </div>
+
+          <Link
+            href="/contenidos/material"
+            className="rounded-2xl border border-border/50 bg-card/60 backdrop-blur-md px-5 py-4 text-left space-y-2 block transition-all duration-300 hover:border-primary/40 hover:bg-card/80 hover:shadow-[0_0_20px_oklch(0.75_0.18_55/0.12)] cursor-pointer"
+          >
+            <div className="flex items-center gap-2">
+              <FolderOpen className="h-5 w-5 text-primary shrink-0" />
+              <span className="text-sm font-semibold text-foreground">Solo estudiar el material</span>
+            </div>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Por haber adquirido el curso tenés acceso completo a todos los PDFs y videos, sin cuestionarios ni restricciones.
+            </p>
+            <span className="inline-flex items-center gap-1.5 mt-1 text-xs font-semibold text-primary">
+              Acceder al material completo →
+            </span>
+          </Link>
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-b from-transparent to-background" />

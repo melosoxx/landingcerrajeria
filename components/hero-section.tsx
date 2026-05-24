@@ -13,17 +13,20 @@ export default function HeroSection() {
   return (
     <section className="relative h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
 
-      {/* Background image */}
-      <Image
-        src="/background.webp"
-        alt=""
-        fill
-        className="object-cover"
-        priority
-      />
+      {/* Background video (loop) */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/background.webp"
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/loop-cerrajeria.mp4" type="video/mp4" />
+      </video>
 
-      {/* Glass/blur overlay */}
-      <div className="absolute inset-0 backdrop-blur-sm bg-background/60 z-[1]" />
+      {/* Dark overlay para legibilidad del texto */}
+      <div className="absolute inset-0 bg-background/50 z-[1]" />
 
       {/* Degradé inferior para transición suave */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background z-[2]" />

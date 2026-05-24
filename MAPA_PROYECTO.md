@@ -6,9 +6,9 @@
 
 | Campo            | Valor                                                      |
 |------------------|------------------------------------------------------------|
-| Versión del mapa | 1.1                                                        |
-| Fecha            | 2026-04-20                                                 |
-| Commit ref       | `9977207b86e3e80e7bc79e2c28866fe2fca49380`                 |
+| Versión del mapa | 1.2                                                        |
+| Fecha            | 2026-05-04                                                 |
+| Commit ref       | `403941a31a59dd423ba578fef5eef104a4199463`                 |
 | Rama             | `master`                                                   |
 | Stack            | Next.js 16 · React 19 · TypeScript · Tailwind v4 · shadcn/ui |
 
@@ -29,10 +29,10 @@
 │           └── route.ts           ← API server-side Meta Conversions
 ├── components/
 │   ├── hero-section.tsx
-│   ├── solution-section.tsx
+│   ├── solution-section.tsx       ← DESHABILITADO (sin importar en page.tsx)
 │   ├── offer-stack.tsx
-│   ├── faq-section.tsx
-│   ├── platform-showroom.tsx      ← NUEVO — Showroom visual de la plataforma (landing)
+│   ├── faq-section.tsx            ← Incluye tabla "Valores de referencia" como primera pregunta
+│   ├── platform-showroom.tsx      ← Showroom visual de la plataforma (fondo negro sólido)
 │   ├── closing-cta.tsx
 │   ├── testimonials-section.tsx   ← DESHABILITADO (returns null)
 │   ├── course/
@@ -79,12 +79,12 @@
 **Puntos de entrada:**
 - `Home()` ~L9-20 — Ensambla las 6 secciones de la landing con `dynamic()` para code splitting. HeroSection se carga eager, el resto lazy.
 
-**Orden de secciones:** HeroSection → SolutionSection → OfferStack → FaqSection → **PlatformShowroom** → ClosingCta
+**Orden de secciones:** HeroSection → **PlatformShowroom** → OfferStack → FaqSection → ClosingCta
 
 **Impacto:** Si tocás esto, revisá:
 - `components/hero-section.tsx` (primera sección, siempre visible)
-- `components/solution-section.tsx`, `offer-stack.tsx`, `faq-section.tsx`, `closing-cta.tsx` (carga lazy)
-- `components/platform-showroom.tsx` (nueva sección entre FAQ y CTA)
+- `components/platform-showroom.tsx`, `offer-stack.tsx`, `faq-section.tsx`, `closing-cta.tsx` (carga lazy)
+- `components/solution-section.tsx` está deshabilitado (no importado) — sus datos de precios viven ahora en `faq-section.tsx`
 
 **Estado:** Estable
 
@@ -151,10 +151,10 @@
 **Ruta:** `components/hero-section.tsx`
 
 **Puntos de entrada:**
-- `HeroSection()` ~L7-80 — Hero full-screen con imagen de fondo, overlay blur, mockup flotante con glow naranja, botón CTA que hace scroll suave a `[data-section="offer"]`.
+- `HeroSection()` ~L7-80 — Hero full-screen con video de fondo en loop, overlay oscuro, mockup flotante con glow naranja, botón CTA que hace scroll suave a `[data-section="offer"]`.
 
 **Elementos clave:**
-- Imagen: `/background.webp` (fill, priority)
+- Video de fondo: `/loop-cerrajeria.mp4` (autoPlay/loop/muted/playsInline, object-cover, poster `/background.webp`)
 - Mockup: `/mockups_nobackground.webp` (max-w 220px mobile / 280px desktop)
 - Animaciones CSS: `animate-fade-in-up`, `animate-glow-bg`, `animate-float` (definidas en `globals.css`)
 - Social proof: "+90 cerrajeros formados" y 5 estrellas (hardcodeado)
@@ -170,24 +170,19 @@
 
 ---
 
-## Módulo 5 — Solution Section
+## Módulo 5 — Solution Section [DESHABILITADO]
 
 **Ruta:** `components/solution-section.tsx`
 
-**Puntos de entrada:**
-- `tablasPrecio` ~L2-33 — Array estático con 3 tablas de precios (Programado, Emergencia, Alta Seguridad) con precios en ARS.
-- `SolutionSection()` ~L35-132 — Sección "Qué incluye el curso": embed YouTube del curso + tabla de precios comparativa.
+**Estado actual:** El componente sigue existiendo en disco pero **no se importa ni renderiza** en `app/page.tsx` (v1.2). La tabla de precios (`tablasPrecio`) fue replicada en `faq-section.tsx` como primera pregunta del acordeón.
 
-**Elementos clave:**
-- `data-section="solution"` — Ancla para scroll interno.
-- YouTube embed dentro de `<iframe>` (ID del video hardcodeado en el JSX).
-- Precios de referencia: Apertura Simple $75.000 ARS → Puerta Blindada $230.000 ARS.
+**Puntos de entrada (legacy):**
+- `tablasPrecio` ~L2-33 — Array estático con 3 tablas de precios (Programado, Emergencia, Alta Seguridad) con precios en ARS. **Ya no es la fuente activa** — la copia viva vive en `faq-section.tsx`.
+- `SolutionSection()` ~L35-132 — Sección "Qué incluye el curso": embed YouTube del curso + tabla de precios.
 
-**Impacto:** Si tocás esto, revisá:
-- El ID de YouTube del embed (hardcodeado en el JSX de esta sección, no en `course-content.ts`)
-- Los precios si se actualizan tarifas de referencia del mercado
+**Impacto:** Si se vuelve a habilitar, sincronizar precios con `faq-section.tsx` antes para evitar divergencia.
 
-**Estado:** Estable
+**Estado:** Deshabilitado
 
 **Lecciones aprendidas:** (ninguna con evidencia)
 
@@ -229,9 +224,11 @@
 **Ruta:** `components/faq-section.tsx`
 
 **Puntos de entrada:**
-- `FaqSection()` ~L4-51 — 4 preguntas frecuentes en acordeón Radix UI. Sin estado propio.
+- `tablasPrecio` ~L3-34 — Array estático con 3 tablas de precios (Programado, Emergencia, Alta Seguridad). Replicado desde `solution-section.tsx`.
+- `FaqSection()` — Acordeón Radix UI. La **primera pregunta** ("¿Cuánto puede ganar un cerrajero independiente?") despliega las tablas de precios; las 4 siguientes son texto plano.
 
 **Contenido de las FAQs (hardcodeado):**
+0. ¿Cuánto puede ganar un cerrajero independiente? → Tablas de precios de referencia (Programado / Emergencia / Alta Seguridad).
 1. ¿Qué herramientas necesito? → No necesitás herramientas previas.
 2. ¿Cómo accedo al curso? → WhatsApp o Google Drive post-compra.
 3. ¿Tiene garantía? → 7 días.
@@ -239,7 +236,8 @@
 
 **Impacto:** Si tocás esto, revisá:
 - `components/ui/accordion.tsx` (componente base)
-- Texto debe estar alineado con lo que dice `components/closing-cta.tsx` (garantía 7 días)
+- `components/solution-section.tsx` (deshabilitado pero contiene la copia legacy de `tablasPrecio` — sincronizar precios si se modifican)
+- Texto debe estar alineado con `components/closing-cta.tsx` (garantía 7 días)
 
 **Estado:** Estable
 
@@ -318,9 +316,7 @@ course-content.ts (modules, supplementary, videos)
 - `PlatformShowroom()` — Sección de marketing en la landing que muestra la UI de la plataforma sin dar acceso real. `"use client"` por el `onOpen` callback en `ModuleCard`.
 
 **Elementos clave:**
-- Fondo: misma imagen que `course-hero.tsx` (`/course-background.webp`, `bg-cover`)
-- Overlay: gradiente negro `from-black/50 via-black/40 to-black/60` + `backdrop-blur-sm`
-- Fades suaves arriba y abajo (`h-24`) para integración visual con secciones adyacentes
+- Fondo: negro sólido (`bg-background`). Sin imagen de fondo, sin blur, sin fades (v1.2).
 - Dos cards de modo (idénticos visualmente a `CourseHero`) sin links ni interacción
 - Grid de 13 `ModuleCard` todos con `status="locked"`, `onOpen={() => {}}` (noop), `[&_button]:opacity-100!` para neutralizar el `opacity-60` del estado bloqueado
 

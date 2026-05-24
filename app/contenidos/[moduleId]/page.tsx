@@ -67,11 +67,11 @@ export default function ModulePage({ params }: PageProps) {
   }
 
   const pdfTask = lmsModule.tasks.find((t) => t.type === "pdf")!;
-  const videoTask = lmsModule.tasks.find((t) => t.type === "video")!;
+  const videoTask = lmsModule.tasks.find((t) => t.type === "video") ?? null;
   const quizTask = lmsModule.tasks.find((t) => t.type === "quiz")!;
 
   const pdfDone = !!taskProgress.get(pdfTask.id);
-  const videoDone = !!taskProgress.get(videoTask.id);
+  const videoDone = videoTask ? !!taskProgress.get(videoTask.id) : true;
   const quizDone = passedModules.has(moduleId);
 
   async function handleOpenPdf() {
@@ -92,7 +92,7 @@ export default function ModulePage({ params }: PageProps) {
   }
 
   async function handleCompleteVideo() {
-    if (videoDone) return;
+    if (!videoTask || videoDone) return;
     await completeTask(videoTask);
   }
 
@@ -100,7 +100,9 @@ export default function ModulePage({ params }: PageProps) {
     setShowCelebration(true);
   }, []);
 
-  const allDone = pdfDone && videoDone && quizDone;
+  const taskDoneList = [pdfDone, ...(videoTask ? [videoDone] : []), quizDone];
+  const totalTasks = taskDoneList.length;
+  const allDone = taskDoneList.every(Boolean);
 
   return (
     <>
@@ -153,12 +155,12 @@ export default function ModulePage({ params }: PageProps) {
               <div
                 className="h-full bg-primary rounded-full transition-all duration-500"
                 style={{
-                  width: `${([pdfDone, videoDone, quizDone].filter(Boolean).length / 3) * 100}%`,
+                  width: `${(taskDoneList.filter(Boolean).length / totalTasks) * 100}%`,
                 }}
               />
             </div>
             <span className="text-xs text-muted-foreground">
-              {[pdfDone, videoDone, quizDone].filter(Boolean).length}/3 tareas
+              {taskDoneList.filter(Boolean).length}/{totalTasks} tareas
             </span>
           </div>
         </div>
@@ -183,39 +185,41 @@ export default function ModulePage({ params }: PageProps) {
           }
         />
 
-        {/* Tarea 2: Video */}
-        <TaskCard
-          number={2}
-          icon={<Play className="h-5 w-5" />}
-          title="Ver la práctica grabada"
-          description="Mirá el video de demostración del módulo."
-          points={videoTask.points}
-          done={videoDone}
-          locked={isTaskLocked(moduleId, videoTask.id)}
-          action={
-            videoTask.youtubeId ? (
-              <div className="space-y-3">
-                <div className="aspect-video rounded-xl overflow-hidden bg-secondary">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${videoTask.youtubeId}`}
-                    title="Video práctica"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full"
-                  />
+        {/* Tarea 2: Video (solo si el módulo tiene video asignado) */}
+        {videoTask && (
+          <TaskCard
+            number={2}
+            icon={<Play className="h-5 w-5" />}
+            title="Ver la práctica grabada"
+            description="Mirá el video de demostración del módulo."
+            points={videoTask.points}
+            done={videoDone}
+            locked={isTaskLocked(moduleId, videoTask.id)}
+            action={
+              videoTask.youtubeId ? (
+                <div className="space-y-3">
+                  <div className="aspect-video rounded-xl overflow-hidden bg-secondary">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${videoTask.youtubeId}`}
+                      title="Video práctica"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full"
+                    />
+                  </div>
+                  {!videoDone && (
+                    <button
+                      onClick={handleCompleteVideo}
+                      className="text-sm font-medium text-primary hover:underline"
+                    >
+                      Marcar como visto ✓
+                    </button>
+                  )}
                 </div>
-                {!videoDone && (
-                  <button
-                    onClick={handleCompleteVideo}
-                    className="text-sm font-medium text-primary hover:underline"
-                  >
-                    Marcar como visto ✓
-                  </button>
-                )}
-              </div>
-            ) : null
-          }
-        />
+              ) : null
+            }
+          />
+        )}
 
         {/* Tarea 3: Quiz */}
         {quiz && (

@@ -6,17 +6,8 @@ import { modules } from "@/lib/course-content";
 
 export default function PlatformShowroom() {
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden">
-      <div
-        className="absolute inset-0 bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/course-background.webp')", backgroundSize: "cover" }}
-      />
-      <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/40 to-black/60 backdrop-blur-sm" />
-      {/* Fade top */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-linear-to-b from-background to-transparent" />
-      {/* Fade bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-background to-transparent" />
-      <div className="relative mx-auto max-w-6xl px-4 space-y-10">
+    <section className="py-16 md:py-24 bg-background">
+      <div className="mx-auto max-w-6xl px-4 space-y-10">
 
         {/* Encabezado */}
         <div className="text-center space-y-3">

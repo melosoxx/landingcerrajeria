@@ -1,6 +1,3 @@
-"use client"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-
 const tablasPrecio = [
   {
     titulo: "Programado",
@@ -34,29 +31,29 @@ const tablasPrecio = [
   },
 ]
 
-export default function FaqSection() {
-  const faqs = [
-    {
-      question: "¿Necesito tener herramientas ya?",
-      answer:
-        "No. El curso te explica exactamente cuáles comprar, dónde, y cuánto gastar. Podés empezar con menos de $50k.",
-    },
-    {
-      question: "¿Cómo accedo al curso?",
-      answer:
-        "Inmediatamente después de comprar, recibirás acceso por WhatsApp o Google Drive. Sin esperas, comienza ya.",
-    },
-    {
-      question: "¿Hay garantía?",
-      answer: "Sí, garantía de 7 días. Si no te satisface, devolución 100% sin preguntas.",
-    },
-    {
-      question: "¿Puedo ver resultados rápido?",
-      answer:
-        "Muchos estudiantes reportan sus primeros servicios en la primera semana. La demanda de cerrajeros urgentes es constante.",
-    },
-  ]
+const faqs = [
+  {
+    question: "¿Necesito tener herramientas ya?",
+    answer:
+      "No. El curso te explica exactamente cuáles comprar, dónde, y cuánto gastar. Podés empezar con menos de $50k.",
+  },
+  {
+    question: "¿Cómo accedo al curso?",
+    answer:
+      "Inmediatamente después de comprar, recibirás acceso por WhatsApp o Google Drive. Sin esperas, comienza ya.",
+  },
+  {
+    question: "¿Hay garantía?",
+    answer: "Sí, garantía de 7 días. Si no te satisface, devolución 100% sin preguntas.",
+  },
+  {
+    question: "¿Puedo ver resultados rápido?",
+    answer:
+      "Muchos estudiantes reportan sus primeros servicios en la primera semana. La demanda de cerrajeros urgentes es constante.",
+  },
+]
 
+export default function FaqSection() {
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-input font-sans">
       <div className="max-w-3xl mx-auto">
@@ -64,60 +61,49 @@ export default function FaqSection() {
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-balance">Preguntas frecuentes</h2>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-4">
-          <AccordionItem
-            value="item-precios"
-            className="bg-card rounded-lg border border-border px-6 data-[state=open]:border-primary/50 transition-colors"
-          >
-            <AccordionTrigger className="py-4 hover:text-primary transition-colors font-semibold">
-              ¿Cuánto puede ganar un cerrajero independiente?
-            </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
-              <div className="space-y-6 pt-2">
-                {tablasPrecio.map((tabla) => (
-                  <div key={tabla.titulo} className={`rounded-xl border ${tabla.borderColor} overflow-hidden`}>
-                    <div className={`${tabla.headerBg} px-4 py-3`}>
-                      <h3 className={`font-bold ${tabla.headerText}`}>{tabla.titulo}</h3>
-                    </div>
-                    <table className="w-full text-sm border-collapse">
-                      <thead>
-                        <tr className="bg-white/5">
-                          <th className="text-left py-3 px-4 text-orange-400 font-bold text-xs uppercase tracking-wider border-b border-border">Servicio</th>
-                          <th className="text-right py-3 px-4 text-orange-400 font-bold text-xs uppercase tracking-wider border-b border-border">Precio</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {tabla.servicios.map((item, index) => (
-                          <tr key={index} className="border-b border-border/40 last:border-b-0 hover:bg-white/5 transition-colors">
-                            <td className="py-3 px-4">
-                              <span className="text-foreground">{item.servicio}</span>
-                              <span className="block text-xs text-muted-foreground mt-0.5">{item.franja}</span>
-                            </td>
-                            <td className="py-3 px-4 font-bold text-primary text-right align-top text-base">{item.precio}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+        <div className="space-y-4">
+          {/* Tarjeta destacada: tabla de precios */}
+          <div className="bg-card rounded-lg border border-primary/40 px-6 py-5">
+            <p className="font-semibold text-foreground mb-4">¿Cuánto puede ganar un cerrajero independiente?</p>
+            <div className="space-y-6">
+              {tablasPrecio.map((tabla) => (
+                <div key={tabla.titulo} className={`rounded-xl border ${tabla.borderColor} overflow-hidden`}>
+                  <div className={`${tabla.headerBg} px-4 py-3`}>
+                    <h3 className={`font-bold ${tabla.headerText}`}>{tabla.titulo}</h3>
                   </div>
-                ))}
-                <p className="text-xs text-muted-foreground text-center">* Precios de referencia del mercado argentino</p>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
+                  <table className="w-full text-sm border-collapse">
+                    <thead>
+                      <tr className="bg-white/5">
+                        <th className="text-left py-3 px-4 text-orange-400 font-bold text-xs uppercase tracking-wider border-b border-border">Servicio</th>
+                        <th className="text-right py-3 px-4 text-orange-400 font-bold text-xs uppercase tracking-wider border-b border-border">Precio</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {tabla.servicios.map((item, index) => (
+                        <tr key={index} className="border-b border-border/40 last:border-b-0 hover:bg-white/5 transition-colors">
+                          <td className="py-3 px-4">
+                            <span className="text-foreground">{item.servicio}</span>
+                            <span className="block text-xs text-muted-foreground mt-0.5">{item.franja}</span>
+                          </td>
+                          <td className="py-3 px-4 font-bold text-primary text-right align-top text-base">{item.precio}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+              <p className="text-xs text-muted-foreground text-center">* Precios de referencia del mercado argentino</p>
+            </div>
+          </div>
 
+          {/* Tarjetas de objeciones */}
           {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="bg-card rounded-lg border border-border px-6 data-[state=open]:border-primary/50 transition-colors"
-            >
-              <AccordionTrigger className="py-4 hover:text-primary transition-colors font-semibold">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">{faq.answer}</AccordionContent>
-            </AccordionItem>
+            <div key={index} className="bg-card rounded-lg border border-border px-6 py-5 space-y-2">
+              <p className="font-semibold text-foreground">{faq.question}</p>
+              <p className="text-muted-foreground text-sm">{faq.answer}</p>
+            </div>
           ))}
-        </Accordion>
+        </div>
       </div>
     </section>
   )

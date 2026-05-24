@@ -39,22 +39,33 @@ export default function HeroSection() {
 
         {/* Subtítulo */}
         <p className="text-white text-sm sm:text-base max-w-2xl mx-auto mb-2 animate-fade-in-up font-sans">
-          Capacitate desde cero con nuestro manual, diseñado para que puedas empezar a hacer tus primeros servicios como <span className="text-primary font-semibold">cerrajero independiente</span>.
+          Capacitate desde cero con nuestro material.<br />Obtené tu certificado completando los 13 módulos educativos.
         </p>
 
-        {/* Imagen de portada con glow naranja centrado */}
+        {/* Carrusel mockup + diploma con glow naranja centrado */}
         <div className="mt-1 -mb-3 flex justify-center animate-fade-in-up relative">
-          {/* Glow naranja centrado detrás del ebook */}
+          {/* Glow naranja centrado detrás del carrusel */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="w-64 h-64 bg-orange-500 rounded-full blur-3xl animate-glow-bg"></div>
           </div>
-          <Image
-            src="/mockups_nobackground.webp"
-            alt="Portada del curso de cerrajería"
-            width={500}
-            height={400}
-            className="relative z-10 drop-shadow-2xl max-w-[220px] sm:max-w-[280px] h-auto animate-float"
-          />
+
+          {/* Viewport del mismo tamaño que el mockup; las imágenes se superponen y alternan */}
+          <div className="relative z-10 w-full max-w-[220px] sm:max-w-[280px] h-[260px] sm:h-[320px] animate-float">
+            <Image
+              src="/mockups_nobackground.webp"
+              alt="Portada del curso de cerrajería"
+              width={500}
+              height={400}
+              className="absolute inset-0 w-full h-full object-contain animate-hero-card"
+            />
+            <Image
+              src="/diploma.png"
+              alt="Diploma del curso de cerrajería"
+              width={1484}
+              height={1060}
+              className="absolute inset-0 w-full h-full object-contain animate-hero-card animate-hero-card-delayed"
+            />
+          </div>
         </div>
 
         {/* CTA Buttons */}

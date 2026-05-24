@@ -197,3 +197,43 @@ html {
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+/* Carrusel premium: cada slide entra/sale con fade + scale + blur + slide.
+   Las dos imágenes comparten el mismo keyframe; la segunda se desfasa medio
+   ciclo con animation-delay negativo para alternar de forma continua. */
+@keyframes hero-card {
+  0% {
+    opacity: 0;
+    transform: translateX(36px) scale(0.9) rotate(1.5deg);
+    filter: blur(6px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+  42% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+  52% {
+    opacity: 0;
+    transform: translateX(-36px) scale(0.9) rotate(-1.5deg);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-36px) scale(0.9) rotate(-1.5deg);
+    filter: blur(6px);
+  }
+}
+
+.animate-hero-card {
+  animation: hero-card 6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  will-change: transform, opacity, filter;
+}
+
+.animate-hero-card-delayed {
+  animation-delay: -3s;
+}

@@ -6,9 +6,9 @@
 
 | Campo            | Valor                                                      |
 |------------------|------------------------------------------------------------|
-| Versión del mapa | 1.2                                                        |
-| Fecha            | 2026-05-04                                                 |
-| Commit ref       | `403941a31a59dd423ba578fef5eef104a4199463`                 |
+| Versión del mapa | 1.3                                                        |
+| Fecha            | 2026-05-23                                                 |
+| Commit ref       | `555d6c8d859b2dc4ddfcf2d29e64de7c4d675c62`                 |
 | Rama             | `master`                                                   |
 | Stack            | Next.js 16 · React 19 · TypeScript · Tailwind v4 · shadcn/ui |
 
@@ -155,8 +155,8 @@
 
 **Elementos clave:**
 - Video de fondo: `/loop-cerrajeria.mp4` (autoPlay/loop/muted/playsInline, object-cover, poster `/background.webp`)
-- Mockup: `/mockups_nobackground.webp` (max-w 220px mobile / 280px desktop)
-- Animaciones CSS: `animate-fade-in-up`, `animate-glow-bg`, `animate-float` (definidas en `globals.css`)
+- Carrusel flotante: viewport fijo (max-w 220px/280px, h 260px/320px) con dos `<Image>` superpuestas (`absolute inset-0`, `object-contain` → mismo footprint): `/mockups_nobackground.webp` y `/diploma.png`. Alternan con `animate-hero-card`; la segunda lleva `animate-hero-card-delayed` (delay -4.5s) para desfasar medio ciclo. Sin `drop-shadow` (generaba sombra rectangular en el diploma).
+- Animaciones CSS: `animate-fade-in-up`, `animate-glow-bg`, `animate-float`, `animate-hero-card` (definidas en `globals.css`)
 - Social proof: "+90 cerrajeros formados" y 5 estrellas (hardcodeado)
 
 **Impacto:** Si tocás esto, revisá:
@@ -440,6 +440,7 @@ Tokens de diseño y animaciones globales:
 - `glow-pulse` — Drop-shadow pulsante naranja (2s infinite)
 - `glow-bg` — Background glow con scale (3s infinite)
 - `float` — Flotación suave (3s infinite)
+- `hero-card` — Transición premium del carrusel mockup↔diploma del Hero: fade + scale + blur + slide + rotate (9s infinite, cubic-bezier). La 2da imagen usa `.animate-hero-card-delayed` (delay -4.5s) para alternar.
 
 **Impacto:** Si tocás `globals.css`, revisá:
 - `components/hero-section.tsx` (usa todas las animaciones)

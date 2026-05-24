@@ -16,22 +16,22 @@ const valueStackItems: ValueItem[] = [
   {
     icon: PlayCircle,
     name: "+4 Horas de prácticas en video",
-    value: 15000,
+    value: 20000,
   },
   {
     icon: BookOpen,
     name: "Manual de Lockpicking",
-    value: 10000,
+    value: 14000,
   },
   {
     icon: Map,
     name: "Atlas de Cerrajería",
-    value: 12000,
+    value: 15000,
   },
   {
     icon: Wrench,
     name: "Guía de herramientas esenciales",
-    value: 8000,
+    value: 10000,
   },
 ]
 
@@ -182,13 +182,13 @@ export default function OfferStack() {
 
             {/* Precios */}
             <div className="mb-4">
-              <p className="text-4xl sm:text-5xl font-bold text-primary">$17.999 ARS</p>
+              <p className="text-4xl sm:text-5xl font-bold text-primary">$22.999 ARS</p>
             </div>
 
             {/* Etiqueta 3 cuotas */}
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-2 mb-6">
               <span>💳</span>
-              <span className="text-sm font-semibold text-primary">Hasta 3 cuotas sin interés de $4.999</span>
+              <span className="text-sm font-semibold text-primary">Hasta 3 cuotas sin interés de $7.666</span>
             </div>
 
             {/* Botón CTA Mejorado - Amarillo */}

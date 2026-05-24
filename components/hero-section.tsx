@@ -13,15 +13,22 @@ export default function HeroSection() {
   return (
     <section className="relative h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
 
-      {/* Background video (loop) */}
+      {/* Mobile: imagen estática de fondo (evita descargar el video en móvil) */}
+      <div
+        className="block md:hidden absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url(/background.webp)" }}
+      />
+
+      {/* Desktop: video en loop */}
       <video
         autoPlay
         loop
         muted
         playsInline
         poster="/background.webp"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="hidden md:block absolute inset-0 w-full h-full object-cover"
       >
+        <source src="/loop-cerrajeria.webm" type="video/webm" />
         <source src="/loop-cerrajeria.mp4" type="video/mp4" />
       </video>
 

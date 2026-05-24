@@ -104,6 +104,9 @@ export default function OfferStack() {
               Llevalo hoy por
             </div>
 
+            {/* Argumento recupero de inversión */}
+            <p className="text-sm text-stone-400 italic mb-3">En una sola emergencia ya recuperás lo que invertiste.</p>
+
             {/* Precios */}
             <div className="mb-4">
               <p className="text-4xl sm:text-5xl font-bold text-primary">$22.999 ARS</p>

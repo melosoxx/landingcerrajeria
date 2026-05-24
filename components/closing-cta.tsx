@@ -15,20 +15,15 @@ export default function ClosingCta() {
   }
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-background via-card to-background relative overflow-hidden">
-      {/* Background effect */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute inset-0 bg-linear-to-r from-primary via-transparent to-primary"></div>
-      </div>
+    <section className="pb-16 sm:pb-24 pt-0 px-4 sm:px-6 lg:px-8 bg-input relative overflow-hidden">
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
+      <div className="relative z-10 max-w-4xl mx-auto text-center pt-8 sm:pt-16">
         <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-balance">
           No es tarde. <span className="text-primary">Empezá hoy.</span>
         </h2>
 
-        <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Cada día que pasa sin aprender cerrajería es dinero que dejás en la mesa. En una sola emergencia ya recuperás lo
-          que invertiste en el curso.
+        <p className="text-xl text-orange-500 font-semibold mb-8 max-w-2xl mx-auto">
+          Cada día que pasa sin aprender cerrajería es dinero que dejás en la mesa.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">

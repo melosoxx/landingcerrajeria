@@ -1,6 +1,5 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { trackEventWithServer } from "@/lib/meta-pixel"
@@ -38,59 +37,6 @@ const valueStackItems: ValueItem[] = [
 const totalValue = valueStackItems.reduce((sum, item) => sum + item.value, 0)
 
 export default function OfferStack() {
-  // Estado para contador de personas viendo (valor fijo inicial para evitar hydration mismatch)
-  const [viewersCount, setViewersCount] = useState(12)
-
-  // Efecto para setear valor random inicial y fluctuar cada 5-10 segundos
-  useEffect(() => {
-    setViewersCount(Math.floor(Math.random() * 7) + 7)
-
-    const fluctuate = () => {
-      setViewersCount((prev) => {
-        const change = Math.floor(Math.random() * 3) + 1
-        const increase = Math.random() > 0.5
-        const newCount = increase ? prev + change : prev - change
-        return Math.max(5, Math.min(18, newCount))
-      })
-    }
-
-    const scheduleNext = () => {
-      const nextInterval = Math.floor(Math.random() * 5000) + 5000
-      return setTimeout(() => {
-        fluctuate()
-        timeoutId = scheduleNext()
-      }, nextInterval)
-    }
-
-    let timeoutId = scheduleNext()
-    return () => clearTimeout(timeoutId)
-  }, [])
-
-  // Contador regresivo de 7 minutos
-  const startTime = useRef(Date.now())
-  const [timeLeft, setTimeLeft] = useState({ minutes: "07", seconds: "00" })
-
-  useEffect(() => {
-    const DURATION = 7 * 60 * 1000 // 7 minutos en ms
-
-    const updateTimer = () => {
-      const elapsed = Date.now() - startTime.current
-      const remaining = Math.max(0, DURATION - elapsed)
-
-      const minutes = Math.floor(remaining / (1000 * 60))
-      const seconds = Math.floor((remaining % (1000 * 60)) / 1000)
-
-      setTimeLeft({
-        minutes: String(minutes).padStart(2, "0"),
-        seconds: String(seconds).padStart(2, "0"),
-      })
-    }
-
-    updateTimer()
-    const interval = setInterval(updateTimer, 1000)
-    return () => clearInterval(interval)
-  }, [])
-
   const handleCheckout = () => {
     trackEventWithServer("InitiateCheckout", {
       content_name: "Curso Cerrajería",
@@ -107,36 +53,14 @@ export default function OfferStack() {
       className="pt-6 pb-10 sm:pt-10 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-card to-background font-sans"
     >
       <div className="max-w-4xl mx-auto bg-transparent">
-        <div className="text-center mb-6 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-orange-500">Esta oferta expira en</h2>
-
-          {/* Contador regresivo */}
-          <div className="flex items-center justify-center gap-3 mt-4">
-            <div className="flex flex-col items-center bg-card border border-primary/30 rounded-lg px-4 py-2 min-w-16">
-              <span className="text-2xl sm:text-3xl font-bold text-primary font-mono">{timeLeft.minutes}</span>
-              <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Min</span>
-            </div>
-            <span className="text-2xl font-bold text-primary">:</span>
-            <div className="flex flex-col items-center bg-card border border-primary/30 rounded-lg px-4 py-2 min-w-16">
-              <span className="text-2xl sm:text-3xl font-bold text-primary font-mono">{timeLeft.seconds}</span>
-              <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Seg</span>
-            </div>
-          </div>
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+            Qué incluye el curso
+          </h2>
         </div>
 
         {/* Offer Stack */}
         <div className="rounded-2xl border-2 border-primary/30 p-4 sm:p-8 mb-8 px-0 bg-input">
-
-          {/* Contador de personas viendo */}
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            <span className="text-sm text-muted-foreground">
-              <span className="font-semibold text-green-400">{viewersCount}</span> personas viendo esta página
-            </span>
-          </div>
 
           {/* Value Stack */}
           <div className="px-3 sm:px-8 mb-6">
